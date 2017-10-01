@@ -112,8 +112,8 @@ class PostController extends Controller
          $posts = Post::all();
          // // $m = $p->material->titulo;
          // // $ex = $p->exercicio->titulo;
-         // return response()->json($posts);
-         return view('testePosts')->withPosts($posts);
+         return response()->json($posts);
+         //return view('testePosts')->withPosts($posts);
 
       }
 
