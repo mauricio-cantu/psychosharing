@@ -107,6 +107,10 @@
 <nav>
     <div class="nav-wrapper">
       <a href="#!" data-activates="slide-out" id="bt-menu"><i class="material-icons" style="display: inline;">menu</i></a>
+      <ul class="right show-on-small hide-on-med-and-up">
+        <a href="home"><i class="material-icons" style="display: inline;">home</i></a>
+      </ul>     
+      
       <ul class="right hide-on-med-and-down">
         <li><a href="sass.html">Sass</a></li>
         <li><a href="badges.html">Components</a></li>

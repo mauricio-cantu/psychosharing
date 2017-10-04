@@ -1,3 +1,4 @@
+<?php $type = "exercício" ?>
 @extends('principal.principal')
 
 <!-- <head>
