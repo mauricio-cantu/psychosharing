@@ -1,5 +1,9 @@
 $(function(){
 
+	$(".button-collapse").sideNav();
+	
+	$("#bt-menu").sideNav();
+
 	$('.chips').material_chip();
 
 	$('#sexo, #linha_terapeutica').material_select();

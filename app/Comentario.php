@@ -10,9 +10,10 @@ class Comentario extends Model
     {
     	$this->belongsTo(Post::class);
     }
-
+    
     public function user()
     {
     	$this->belongsTo(User::class);
     }
+    
 }

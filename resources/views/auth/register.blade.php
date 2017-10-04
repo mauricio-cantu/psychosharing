@@ -76,7 +76,7 @@
 
     <div class="row">
     <div class="input-field col s6">
-    <input id="senha" type="password" name="password" class="{{ $errors->has('password') ? 'invalid':'' }}">
+    <input id="senha" type="password" name="password" class="validate {{ $errors->has('password') ? 'invalid':'' }}">
     @if ($errors->has('password'))
     <span class="red-text">
     {{ $errors->first('password') }}
@@ -87,7 +87,7 @@
 
 
     <div class="input-field col s6">
-    <input id="senha" type="password" name="password_confirmation" class="{{ $errors->has('password') ? 'invalid':'' }}">
+    <input id="senha" type="password" name="password_confirmation" class="validate {{ $errors->has('password') ? 'invalid':'' }}">
     @if ($errors->has('password'))
     <span class="red-text">
     {{ $errors->first('password') }}

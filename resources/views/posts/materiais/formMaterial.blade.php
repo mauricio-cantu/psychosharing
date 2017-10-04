@@ -1,3 +1,5 @@
+<?php $type = "material" ?>
+
 @extends('principal.principal')
 @section('conteudo')
 
@@ -8,7 +10,7 @@
 	<br>
 
 	<form action="/materiais/cadastrar" method="POST" enctype="multipart/form-data">
-		
+
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 		@include('commom.tituloInput')

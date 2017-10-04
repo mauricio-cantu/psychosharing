@@ -1,5 +1,7 @@
+<?php $type = "evento" ?>
 @extends('principal.principal')
 @section('conteudo')
+
 
 <div class="hoverable card" style="padding: 20px;">
 
