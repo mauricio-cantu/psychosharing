@@ -58,6 +58,19 @@ $(function(){
         close: 'Fechar',
         closeOnSelect: false,
         format: 'dd/mm/yyyy'
-    });
+	});
+	
 
 });
+
+function logout(){
+	swal("Realizar logout?",{
+		icon: "info",
+		buttons:{
+			cancel: true,
+			confirm: true
+		},
+		confirmButtonText: "Sim",
+		cancelButtonText: "Cancelar",
+	});
+}

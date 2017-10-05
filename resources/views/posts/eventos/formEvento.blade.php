@@ -3,7 +3,7 @@
 @section('conteudo')
 
 
-<div class="hoverable card" style="padding: 20px;">
+<div class="hoverable card" style="padding: 40px;">
 
 	<h3 class="center-align"><i class="fa fa-calendar"></i> Compartilhar evento</h3>
 

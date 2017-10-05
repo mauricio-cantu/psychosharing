@@ -14,6 +14,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/materialize.css') }}" rel="stylesheet">
     <link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/material-kit.css') }}" rel="stylesheet"> --> 
 
@@ -34,16 +35,15 @@
         color: black;
       }
 
-      .nav-wrapper{ padding-left: 10px; }
+      .nav-wrapper{ padding-left: 15px; }
 
-   
+      .container{ width: 80%; } 
 
      @media only screen and (max-width : 992px) {
-      header, main, footer, .container {
-        
-        
+        header, main, footer, .container {
+             
+        }
       }
-    }
     
 
     </style>
@@ -108,14 +108,22 @@
     <div class="nav-wrapper">
       <a href="#!" data-activates="slide-out" id="bt-menu"><i class="material-icons" style="display: inline;">menu</i></a>
       <ul class="right show-on-small hide-on-med-and-up">
-        <a href="home"><i class="material-icons" style="display: inline;">home</i></a>
+        <a href="\home"><i class="material-icons" style="display: inline;">home</i></a>
       </ul>     
       
-      <ul class="right hide-on-med-and-down">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">Javascript</a></li>
-        <li><a href="mobile.html">Mobile</a></li>
+      <ul class="right hide-on-med-and-down">        
+        <li><a class="btn dropdown-button" data-activates="options">{{ Auth::user()->name }}</a></li>
+
+        <ul id='options' class='dropdown-content' style="width: 300px !important">
+          <li><a href="#!">Configurações</a></li>
+          <li><a href="#!">Dashboard</a></li>
+          <li class="divider"></li>
+          <li><a onclick="logout()">Logout</a></li>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            {{ csrf_field() }}
+          </form>
+        </ul>
+
       </ul>
     </div>
   </nav>   
@@ -129,7 +137,7 @@
   
 <div class="container">
   @yield('conteudo')
-  <div>
+<div>
   
     
   
@@ -141,10 +149,10 @@
     $('.dropdown-button').dropdown({
       inDuration: 300,
       outDuration: 225,
-      constrainWidth: false, // Does not change width of dropdown to that of the activator
-      hover: true, // Activate on hover
+      constrainWidth: true, // Does not change width of dropdown to that of the activator
+      hover: false, // Activate on hover
       gutter: 0, // Spacing from edge
-      belowOrigin: false, // Displays dropdown below the button
+      belowOrigin: true, // Displays   dropdown below the button
       alignment: 'left', // Displays dropdown with edge aligned to the left of button
       stopPropagation: false // Stops event propagation
     }

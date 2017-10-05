@@ -47,7 +47,7 @@
 			<br>
 
 			<div class="left-align">
-				<button class="btn waves-effect" type="submit">entrar</button>
+				<button class="btn waves-effect" type="submit" name="logar">entrar</button>
 				<a class="right" href="{{ route('password.request') }}">Esqueceu sua senha?</a>
 			</div>
 

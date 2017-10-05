@@ -1,18 +1,17 @@
 <style>
-.fixed-action-btn{ margin-right: 20px; }
+    
+    .fixed-action-btn{ margin-right: 20px; }
 
 </style>
 
 @extends('principal.principal')
-
-
 @section('conteudo')
 
 <div class="fixed-action-btn horizontal">
     <a class="btn-floating btn-large pulse amber accent-3" title="Compartilhe">
-      <i class="large material-icons black-text">add_circle_outline</i>
+      <i class="large material-icons black-text">add</i>
     </a>
-    <ul>
+    <ul id="actions">
       <li><a class="btn-floating red tooltipped" data-position="top" data-delay="50" data-tooltip="Evento" title="Evento" href="eventos/cadastrar"><i class="material-icons">date_range</i></a></li>
       <li><a class="btn-floating yellow darken-1 tooltipped" data-position="top" data-delay="50" data-tooltip="Relato de caso" href="relatos/cadastrar"  title="Relato de caso"><i class="material-icons">format_align_left</i></a></li>
       <li><a class="btn-floating green tooltipped" data-position="top" data-delay="50" data-tooltip="Exercícios e dicas" href="exercicios/cadastrar"  title="Exercícios e dicas"><i class="material-icons">casino</i></a></li>
