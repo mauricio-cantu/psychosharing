@@ -8,6 +8,7 @@ use App\Material;
 use App\Evento;
 use App\Relato;
 use App\Post;
+use App\PalavraChave;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ExercicioRequest;
 use App\Http\Requests\MaterialRequest;
@@ -18,19 +19,24 @@ class PostController extends Controller
 {
    	public function cadastrarExercicio(ExercicioRequest $request)
       {
-
-         $post = Post::create([
+        $post = Post::create([
                      'tipo'=>'exercicio',
-                     'user_id'=>Auth::user()->id,
-                     'palavras_chave'=>$request->input('palavras_chave')
+                     'user_id'=>Auth::user()->id
                  ]);
 
-         $exercicio = new Exercicio($request->except('palavras_chave'));
+        $exercicio = new Exercicio($request->all());
          
-         $post->exercicio()->save($exercicio);
+        if($exercicio){
+            $post->exercicio()->save($exercicio);
+            return response()->json(['status'=>'created'], 200);
+        }else{
+            return response()->json(['status'=>'failed']);
+        }
+
+         
 
          // return response()->json($request->input('palavras_chave'));
-         return view('principal.home');
+        //  return view('principal.home');
 
       }
 
@@ -114,6 +120,11 @@ class PostController extends Controller
          // // $ex = $p->exercicio->titulo;
          return response()->json($posts);
          //return view('testePosts')->withPosts($posts);
+
+      }
+
+      public function testeChaves()
+      {
 
       }
 

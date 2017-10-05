@@ -16,16 +16,18 @@
 
 <div class="hoverable card" style="padding: 20px;">
 	
+	
+
 	<h3 class="center-align"><i class="fa fa-lightbulb-o"></i> Compartilhar exercícios e dicas</h3>
 	
-	
+	<div id="errors" class="card" style="padding: 10px; display:none;"></div>
 
 	<br>
 	
-	<form action="/exercicios/cadastrar" method="post">
+	<!-- <form action="/exercici	os/cadastrar" method="post"> -->
 
-		<input type="hidden" name="_token" value="{{ csrf_token() }}">
-
+		<input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
+ 
 		@include('commom.tituloInput')
 
 		@include('commom.descricaoInput')
@@ -62,7 +64,7 @@
 
 		<div class="center-align">
 
-			<button class="btn" type="submit">compartilhar</button>
+			<button class="btn" onclick="cadastrar()" id="submit">compartilhar</button>
 			
 		</div>
 
@@ -73,46 +75,45 @@
 
 <br>
 
-<!-- <script type="text/javascript">
-	$(document).ready(function () {
-		$('.chips').material_chip();
-	});		
-
-	var inputKeys = $('#palavras_chave');
-	
-	$('.chips').on('chip.add', function(e, chip){
-
-		var atualiza;		
-		var valAtual = inputKeys.val();
+<script type="text/javascript">
+	function cadastrar(){
+		var titulo = $('#titulo').val();
+		var descricao = $('#descricao').val();
+		var linha = $('#linha_terapeutica').val();
+		var token = $('#token').val();
+		var chips = $('#chips').material_chip('data');
 		
-		if (valAtual == "") {
-			var atualiza = chip.tag;
-		}else{
-			var atualiza = valAtual + ", " + chip.tag;	
-		}
-		
-    	inputKeys.val(atualiza);
-  	});
+		$.ajax({
+			type: 'post',
+			url: '/exercicios/cadastrar',
+			data: {
+				titulo: titulo,
+				descricao: descricao,
+				linha_terapeutica: linha,
+				palavras_chave: chips,
+				_token: token
+			},
+			dataType: 'json',
+			success: function(data){
+				console.log(data);
+				// window.location = "http://localhost:8000/home";
 
-  	$('.chips').on('chip.delete', function(e, chip){
+			},
+			error: function(data){
+				console.log(data);
+				var errors = data.responseJSON;
 
-  		var atualizado = "";  		
-  		var data = $('#chips').material_chip('data');
-  		
-  		$.each(data, function(index, value){
-  			if (index == 0) {
-  				atualizado += value.tag; 	
-  			} else {
-  				atualizado += ", " + value.tag; 
-  			}
-  			
-  		});
+				$('#errors').empty();
+				$('#errors').show();
+				
+				$.each(errors, function(key, value){
+					$('#errors').append(value+'<br>');
+				});
+			}
+		});
 
-  		inputKeys.val(atualizado);
-  	});
 
-	
-
-</script> -->
+	}	
+</script>
 
 @stop

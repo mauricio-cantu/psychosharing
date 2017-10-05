@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
 
-    protected $fillable = ['tipo', 'user_id', 'palavras_chave'];
+    protected $fillable = ['tipo', 'user_id'];
 
     public function user()
     {
@@ -38,4 +38,10 @@ class Post extends Model
     {
     	return $this->hasOne(Material::class);
     }
+
+    public function chaves()
+    {
+        return $this->belongsToMany(PalavraChave::class, 'chave_post');
+    }
+
 }

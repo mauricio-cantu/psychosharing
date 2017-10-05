@@ -31,7 +31,7 @@ class ExercicioRequest extends FormRequest
     public function messages()
     {
         return [
-            'required'=>'Por favor, preencha este campo.'
+            'required'=>'Por favor, preencha o campo :attribute.'
         ];
     }
 
