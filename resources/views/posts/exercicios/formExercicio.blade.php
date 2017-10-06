@@ -24,7 +24,7 @@
 
 	<br>
 	
-	<!-- <form action="/exercici	os/cadastrar" method="post"> -->
+	<!-- <form action="/exercicios/cadastrar" method="post"> -->
 
 		<input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
  
@@ -48,7 +48,7 @@
 
 		@include('commom.linhaInput')
 
-		@include('commom.palavrasChavesInput')
+		<!-- @include('commom.palavrasChavesInput') -->
 
 		<!-- <div class="input-field">
 
@@ -56,9 +56,9 @@
 			<label for="palavras_chave">Torne sua publicação mais acessível, adicione palavras-chave (pressione enter para adicionar outras):</label>
 			<br><br>
 
-		</div>
+		</div>-->
 		
-		<div class="chips" id="chips"></div> -->
+		<div class="chips" id="chips"></div>
 
 		<br>
 
@@ -96,12 +96,16 @@
 			dataType: 'json',
 			success: function(data){
 				console.log(data);
-				// window.location = "http://localhost:8000/home";
-
+				swal("Publicação compartilhada!", {
+					icon: "success",
+					timer: 3000
+				});
+				
 			},
 			error: function(data){
-				console.log(data);
+				
 				var errors = data.responseJSON;
+				console.log(errors);
 
 				$('#errors').empty();
 				$('#errors').show();

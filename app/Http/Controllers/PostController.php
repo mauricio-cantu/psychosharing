@@ -23,15 +23,22 @@ class PostController extends Controller
                      'tipo'=>'exercicio',
                      'user_id'=>Auth::user()->id
                  ]);
+        
+        $arrayTags = $request->only('palavras_chave');
+        $tags = array_values($arrayTags)[0]; 
+        
+        foreach ($tags as $index) {
+            // return response()->json($value['tag']);
+            $p = PalavraChave::create(['palavra_chave'=>$index['tag']]);
+            $post->chaves()->attach($p['id']);
+        }      
 
         $exercicio = new Exercicio($request->all());
          
-        if($exercicio){
-            $post->exercicio()->save($exercicio);
-            return response()->json(['status'=>'created'], 200);
-        }else{
-            return response()->json(['status'=>'failed']);
-        }
+        $post->exercicio()->save($exercicio);
+        
+        return response()->json(['status'=>'created'], 200);
+        
 
          
 

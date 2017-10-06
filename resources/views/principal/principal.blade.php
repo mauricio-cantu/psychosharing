@@ -41,7 +41,13 @@
 
      @media only screen and (max-width : 992px) {
         header, main, footer, .container {
-             
+             width: 100%;
+             margin-left: 10px auto;
+             margin-right: 10px auto;
+        }
+
+        h1, h2, h3, h4, h5, h6{
+          font-size: 140%;
         }
       }
     
