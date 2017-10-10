@@ -36,7 +36,7 @@ class EventoRequest extends FormRequest
     public function messages()
     {
         return [
-            'required'=>'Por favor, preencha o campo :attribute.',
+            'required'=>':attribute.',
             'url'=>'Por favor, insira um link válido.'
         ];
     }
@@ -44,8 +44,10 @@ class EventoRequest extends FormRequest
     public function attributes()
     {
         return [
-            'titulo'=>'título',
-            'descricao'=>'descrição'            
+            'titulo'=>'Título',
+            'descricao'=>'Descrição',
+            'local'=>'Local',
+            'data'=>'Data'            
         ];
     }
 }

@@ -34,15 +34,16 @@ class RelatoRequest extends FormRequest
     public function messages()
     {
         return [
-            'required'=>'Por favor, preencha o campo :attribute.'
+            'required'=>':attribute'
         ];
     }
 
     public function attributes()
     {
         return [
-            'titulo'=>'título',
-            'linha_terapeutica'=>'linha terapêutica'
+            'titulo'=>'Título',
+            'linha_terapeutica'=>'Linha terapêutica',
+            'conteudo'=>'Relato'
         ];
     }
 }

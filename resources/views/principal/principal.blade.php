@@ -29,7 +29,7 @@
     <script src="{{ asset('js/materialize.min.js') }}"></script>
 
     <style type="text/css">
-      /*body{ background-color: #F5F5F5; }*/
+
 
       .btn{
         color: black;
@@ -39,11 +39,9 @@
 
       .container{ width: 80%; } 
 
-     @media only screen and (max-width : 992px) {
+     @media only screen and (max-width : 1050px) {
         header, main, footer, .container {
              width: 100%;
-             margin-left: 10px auto;
-             margin-right: 10px auto;
         }
 
         h1, h2, h3, h4, h5, h6{
@@ -124,7 +122,8 @@
           <li><a href="#!">Configurações</a></li>
           <li><a href="#!">Dashboard</a></li>
           <li class="divider"></li>
-          <li><a onclick="logout()">Logout</a></li>
+          <li><a onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">Logout</a></li>
           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             {{ csrf_field() }}
           </form>
@@ -140,14 +139,10 @@
       
 
 <main>
-  
-<div class="container">
-  @yield('conteudo')
-<div>
-  
-    
-  
 
+	<div class="container">
+	  @yield('conteudo')
+	<div>
 </main>
 
 <script type="text/javascript">

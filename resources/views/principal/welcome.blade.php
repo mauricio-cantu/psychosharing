@@ -24,8 +24,7 @@
 }
 
 .circulo:hover{
-
-	-webkit-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
     -ms-transform: scale(1.1);
     transform: scale(1.1);
 
@@ -51,9 +50,7 @@
 	font-weight: 100;
 }
 
-main, footer{
-	padding-left: 0;
-}
+	
 
 </style>
 

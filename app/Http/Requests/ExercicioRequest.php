@@ -31,7 +31,7 @@ class ExercicioRequest extends FormRequest
     public function messages()
     {
         return [
-            'required'=>'Por favor, preencha o campo :attribute.'
+            'required'=>':attribute.'
         ];
     }
 
@@ -39,9 +39,9 @@ class ExercicioRequest extends FormRequest
     public function attributes()
     {
         return [
-            'titulo'=>'título',
-            'descricao'=>'descrição',
-            'linha_terapeutica'=>'linha terapêutica',
+            'titulo'=>'Título',
+            'descricao'=>'Descrição',
+            'linha_terapeutica'=>'Linha terapêutica',
         ];
     }
 }

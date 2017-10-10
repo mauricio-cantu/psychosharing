@@ -6,22 +6,23 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+
 use App\User;
 
-class TestingTes extends TestCase
+class SomaTest extends TestCase
 {
     /**
      * A basic test example.
      *
-     * @return void
+     * @return void(
      */
     public function testExample()
-    {        
-               
-        $this->get('/login')
-                         ->type('djasldka@asdas.com', 'email')
-                         ->type('dasjdlksa', 'password');
+    {           
+        $true = false;        
+        $this->assertFalse($true);
 
-                
+        $false = false;
+        $this->assertFalse($false);
     }
 }
+

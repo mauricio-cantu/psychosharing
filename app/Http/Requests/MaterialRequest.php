@@ -35,8 +35,7 @@ class MaterialRequest extends FormRequest
     public function messages()
     {
         return [
-            'titulo.required'=>'Dê um título a sua publicação.',
-            'descricao.required'=>'Descreva um pouco sobre este material.',
+            'required'=>':attribute',            
             'url'=>'Por favor, insira um endereço válido.'
         ];
     }
@@ -44,8 +43,8 @@ class MaterialRequest extends FormRequest
     public function attributes()
     {
         return [
-            'titulo'=>'título',
-            'descricao'=>'descrição'
+            'titulo'=>'Título',
+            'descricao'=>'Descrição'
         ];
     }
 }

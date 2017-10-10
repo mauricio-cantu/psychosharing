@@ -5,11 +5,13 @@
 
 	<h3 class="center-align"><i class="fa fa-align-left"></i> Compartilhar relato</h3>
 
+	<div id="errors" class="card" style="padding: 10px; padding-left: 20px; display:inline-block;"></div>
+
 	<br>
 
-	<form action="/relatos/cadastrar" method="post">
+	<!-- <form action="/relatos/cadastrar" method="post"> -->
 
-		<input type="hidden" name="_token" value="{{ csrf_token() }}">
+		<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
 
 		@include('commom.tituloInput')
 		
@@ -28,18 +30,19 @@
 		</div>
 
 		@include('commom.linhaInput')
-
+	
 		@include('commom.palavrasChavesInput')
 
 
 		<div class="center-align">
 
-			<button class="btn" type="submit">compartilhar</button>
+			<button class="btn" onclick="cadastrarRelato()">compartilhar</button>
 			
 		</div>
 
-	</form>
+	
 
 </div>
+<script src="{{ asset('js/posts.js') }}"></script>
 
 @stop

@@ -13,6 +13,8 @@ $(function(){
 		$(this).parent().find('span').hide();
 	});
 
+	$('#errors').hide();
+
 	$('#link').prop('disabled', false);
 
 	$('#noLink').click(function(){
@@ -74,3 +76,4 @@ function logout(){
 		cancelButtonText: "Cancelar",
 	});
 }
+
