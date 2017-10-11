@@ -14,32 +14,70 @@ $(function(){
 	});
 
 	$('#errors').hide();
+	
+	disableLink();
+	
+	disableAnexo();
+	
+	activateDatepicker();
 
-	$('#link').prop('disabled', false);
+	activateDropdowns();	
 
-	$('#noLink').click(function(){
+});
 
-		if($('#link').is(':disabled')){
-			$('#link').prop('disabled', false);
-		}else{
-			$('#link').val('');
-			$('#link').removeClass('valid');
-			$('#link').prop('disabled', true);
-		}
+function logout(){
+	swal("Realizar logout?",{
+		icon: "info",
+		buttons:{
+			cancel: true,
+			confirm: true
+		},
+		confirmButtonText: "Sim",
+		cancelButtonText: "Cancelar",
 	});
+}
 
-	$('.anexo').prop('disabled', false);
+// exibir erros de preenchimento de dados
+function showErrors(data){
+    var errors = data.responseJSON;
+    console.log(errors);
 
-	$('#noFile').click(function(){
-		if($('.anexo').is(':disabled')){
-			$('#link').val('');
-			$('#link').removeClass('valid');
-			$('.anexo').prop('disabled', false);
-		}else{
-			$('.anexo').prop('disabled', true);
-		}
-	});
+    $('#errors').empty()
+    .fadeIn('slow')
+    .append('Os campos abaixo devem ser preenchidos:<br>')
+    .append('<ul>');
+    $.each(errors, function(key, value){					
+        $('#errors').append('<li>'+value+'</li>');
+    });
+    $('#errors').append('</ul>');
+}
 
+// dialog de publicação compartilhada
+function alertSuccess(){
+    swal("Publicação compartilhada!", {
+        icon: "success",
+        timer: 2500
+    }).then(function(){
+        location.href = '/home';
+    });
+}
+
+function activateDropdowns(){
+	$('.dropdown-button').dropdown({
+		inDuration: 300,
+		outDuration: 225,
+		constrainWidth: true, // Does not change width of dropdown to that of the activator
+		hover: false, // Activate on hover
+		gutter: 0, // Spacing from edge
+		belowOrigin: true, // Displays   dropdown below the button
+		alignment: 'left', // Displays dropdown with edge aligned to the left of button
+		stopPropagation: false // Stops event propagation
+	  }
+	);
+}
+
+// função para ativar a modal de calendário do Materialize em português
+function activateDatepicker(){
 	$('.datepicker').pickadate({
         
         labelMonthNext: 'Proximo Mês',
@@ -61,19 +99,35 @@ $(function(){
         closeOnSelect: false,
         format: 'dd/mm/yyyy'
 	});
+}
+
+// função para poder desabilitar o campo de anexo
+function disableAnexo(){
+	$('.anexo').prop('disabled', false);
 	
-
-});
-
-function logout(){
-	swal("Realizar logout?",{
-		icon: "info",
-		buttons:{
-			cancel: true,
-			confirm: true
-		},
-		confirmButtonText: "Sim",
-		cancelButtonText: "Cancelar",
+	$('#noFile').click(function(){
+		if($('.anexo').is(':disabled')){
+			$('#link').val('');
+			$('#link').removeClass('valid');
+			$('.anexo').prop('disabled', false);
+		}else{
+			$('.anexo').prop('disabled', true);
+		}
 	});
 }
 
+// função para poder desabilitar o campo de link	
+function disableLink(){
+	$('#link').prop('disabled', false);
+	
+	$('#noLink').click(function(){
+
+		if($('#link').is(':disabled')){
+			$('#link').prop('disabled', false);
+		}else{
+			$('#link').val('');
+			$('#link').removeClass('valid');
+			$('#link').prop('disabled', true);
+		}
+	});
+}

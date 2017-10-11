@@ -3,7 +3,7 @@
 @extends('principal.principal')
 @section('conteudo')
 
-<div class="hoverable card" style="padding: 20px;">
+<div class="hoverable card post-form">
 
 	<h3 class="center-align"><i class="fa fa-book"></i> Compartilhar material</h3>
 
@@ -38,8 +38,6 @@
 		          </span>
 		          <br>
         	@endif
-
-        @include('commom.palavrasChavesInput')
 
    		<div class="center-align">
 

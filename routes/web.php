@@ -52,11 +52,19 @@ Route::middleware('auth')->group(function(){
 
 });
 
-// Rotas de teste
-Route::get('testePosts', 'PostController@teste');
+use App\Post;
+use App\PalavraChave;
 
-Route::delete('users/{id}', function ($id) {
-		
+// Rotas de teste
+Route::get('testeJson/{id}', function($id){
+	$post = Post::find($id)->evento()->first();
+	$keys = $post->post()->first()->chaves()->select('palavra_chave as tag')->get();
+	return response()->json(array(
+		'post'=>$post,
+		'keys'=>$keys
+	));
 });
 
-
+Route::get('jsonView', function(){
+	return view('posts.exercicios.testeJson');
+});

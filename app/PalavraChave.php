@@ -12,6 +12,8 @@ class PalavraChave extends Model
 
     public $fillable = ['palavra_chave'];
 
+    public $hidden = ['pivot'];
+
     public function post()
     {
         return $this->belongsToMany(Post::class, 'chave_post');

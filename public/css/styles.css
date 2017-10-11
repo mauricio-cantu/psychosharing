@@ -1,0 +1,70 @@
+.nav-wrapper {
+  padding-left: 15px; }
+
+.container {
+  width: 80%; }
+
+@media only screen and (max-width: 1050px) {
+  header, main, footer, .container {
+    width: 100%; }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-size: 140%; } }
+.btn {
+  color: black; }
+
+.fixed-action-btn {
+  margin-right: 20px; }
+
+.card {
+  padding: 20px; }
+
+.post-form {
+  padding-left: 40px;
+  padding-right: 40px; }
+
+.errors {
+  padding: 10px;
+  padding-left: 20px;
+  display: inline-block; }
+
+#promo {
+  background-color: #303f9f;
+  padding-top: 10px;
+  padding-bottom: 20px; }
+
+.circulo {
+  border-radius: 50%;
+  vertical-align: middle;
+  display: table-cell;
+  height: 150px;
+  width: 150px;
+  text-align: center;
+  transition: all 0.3s ease; }
+  @media only screen and (max-width: 1050px) {
+    .circulo {
+      height: 30%;
+      width: 30%; } }
+
+.circulo:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1); }
+
+.info {
+  vertical-align: middle;
+  display: table-cell;
+  padding-left: 20px; }
+
+.container > h1 {
+  letter-spacing: 0.22em;
+  margin-bottom: 0; }
+
+.container > h4 {
+  margin-top: 0;
+  font-weight: 100; }
+
+strong {
+  font-weight: 800; }
+
+/*# sourceMappingURL=styles.css.map */

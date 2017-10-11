@@ -3,15 +3,13 @@
 @section('conteudo')
 
 
-<div class="hoverable card" style="padding: 40px;">
+<div class="hoverable card post-form">
 
 	<h3 class="center-align"><i class="fa fa-calendar"></i> Compartilhar evento</h3>
 
-	<div id="errors" class="card" style="padding: 10px; padding-left: 20px; display:inline-block;"></div>
+	<div id="errors" class="card errors"></div>
 
 	<br>
-
-	<!-- <form action="/eventos/cadastrar" method="post"> -->
 
 		<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
 
@@ -49,7 +47,10 @@
 
 		@include('commom.linkInput')
 
-		@include('commom.palavrasChavesInput')
+		<br>
+
+		<label>Torne sua publicação mais acessível, adicione palavras-chave (pressione enter para adicionar outras):</label>
+		<div class="chips" id="chips"></div>
 
 		<div class="center-align">
 
@@ -59,5 +60,5 @@
 
 	
 
-<script src="{{ asset('js/posts.js') }}"></script>
+<script src="{{ asset('js/posts/evento.js') }}"></script>
 @stop

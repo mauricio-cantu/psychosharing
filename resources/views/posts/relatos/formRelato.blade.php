@@ -1,11 +1,11 @@
 @extends('principal.principal')
 @section('conteudo')
 
-<div class="hoverable card" style="padding: 20px;">
+<div class="hoverable card post-form">
 
 	<h3 class="center-align"><i class="fa fa-align-left"></i> Compartilhar relato</h3>
 
-	<div id="errors" class="card" style="padding: 10px; padding-left: 20px; display:inline-block;"></div>
+	<div id="errors" class="card errors"></div>
 
 	<br>
 
@@ -43,6 +43,6 @@
 	
 
 </div>
-<script src="{{ asset('js/posts.js') }}"></script>
+<script src="{{ asset('js/posts/relato.js') }}"></script>
 
 @stop

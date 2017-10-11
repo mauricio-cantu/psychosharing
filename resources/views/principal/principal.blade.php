@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
-
     <meta charset="utf-8">
+    <!-- Torna as medidas responsivas -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
@@ -13,10 +13,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/materialize.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet">
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/material-kit.css') }}" rel="stylesheet"> --> 
+    <link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet">  
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">    
 
     <!-- Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
@@ -27,36 +25,12 @@
     <script src="{{ asset('js/jquery-ui.js') }}"></script>
     <script src="{{ asset('js/scripts.js') }}"></script>
     <script src="{{ asset('js/materialize.min.js') }}"></script>
-
-    <style type="text/css">
-
-
-      .btn{
-        color: black;
-      }
-
-      .nav-wrapper{ padding-left: 15px; }
-
-      .container{ width: 80%; } 
-
-     @media only screen and (max-width : 1050px) {
-        header, main, footer, .container {
-             width: 100%;
-        }
-
-        h1, h2, h3, h4, h5, h6{
-          font-size: 140%;
-        }
-      }
-    
-
-    </style>
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>    
 
 </head>
 
 <body> 
-    
+    <!-- Se não estiver logado, aparece o link para logar e cadastrar -->
     @if(Auth::guest())
       <nav class="z-depth-4">
           <div class="nav-wrapper">
@@ -71,9 +45,9 @@
     
     @else
 
-
+<!-- Caso esteja logado, fica disponível o menu lateral e o cabeçalho com o botão do usuário -->
+<!-- Menu lateral -->
 <ul id="slide-out" class="side-nav">
-
   <li>
     <div class="user-view">
       <div class="background indigo darken-2">
@@ -108,6 +82,7 @@
 
 <header>
 
+<!-- Menu do cabeçalho caso esteja logado -->
 <nav>
     <div class="nav-wrapper">
       <a href="#!" data-activates="slide-out" id="bt-menu"><i class="material-icons" style="display: inline;">menu</i></a>
@@ -137,29 +112,14 @@
 
 @endif
       
-
 <main>
-
+  <!-- Conteúdo das outras páginas ficam sempre dentro de um container -->
 	<div class="container">
 	  @yield('conteudo')
 	<div>
+
 </main>
 
-<script type="text/javascript">
-  
-    $('.dropdown-button').dropdown({
-      inDuration: 300,
-      outDuration: 225,
-      constrainWidth: true, // Does not change width of dropdown to that of the activator
-      hover: false, // Activate on hover
-      gutter: 0, // Spacing from edge
-      belowOrigin: true, // Displays   dropdown below the button
-      alignment: 'left', // Displays dropdown with edge aligned to the left of button
-      stopPropagation: false // Stops event propagation
-    }
-  );
-
-</script>
-
 </body>
+
 </html>

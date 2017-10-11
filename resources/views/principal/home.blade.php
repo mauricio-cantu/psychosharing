@@ -1,12 +1,7 @@
-<style>
-    
-    .fixed-action-btn{ margin-right: 20px; }
-
-</style>
-
 @extends('principal.principal')
 @section('conteudo')
 
+<!-- FAB Button com opções de compartilhamento -->
 <div class="fixed-action-btn horizontal">
     <a class="btn-floating btn-large pulse amber accent-3" title="Compartilhe">
       <i class="large material-icons black-text">add</i>
@@ -19,8 +14,7 @@
     </ul>
   </div>
 
-
-    <div class="card" style="padding-top: 10px;">
+    <div class="card">
         
         @if( Auth::user()->sexo == "Masculino" )
             <h1 class="indigo-text text-darken-2 center-align">Bem-vindo, {{ Auth::user()->name }}!</h1>

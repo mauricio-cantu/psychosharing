@@ -2,61 +2,9 @@
 
 @section('conteudo')
 
-<style type="text/css">
-
-
-
-
-#promo{
-	background-color: #303f9f;
-	padding-top: 10px;
-	padding-bottom: 20px;
-}
-
-.circulo {
-    border-radius: 50%;
-    vertical-align: middle;
-    display: table-cell;
-    height: 150px;
-    width: 150px;
-    text-align: center;
-    transition:all 0.3s ease; 
-}
-
-.circulo:hover{
-    -webkit-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    transform: scale(1.1);
-
-}
-
-.info{
-	vertical-align: middle;
-    display: table-cell;
-    padding-left: 20px;
-}
-
-.info > h5{
-	font-weight: 300;
-}
-
-.container > h1{
-	letter-spacing: 0.22em;
-	margin-bottom: 0;
-}
-
-.container > h4{
-	margin-top: 0;
-	font-weight: 100;
-}
-
-	
-
-</style>
-
 <div class="center-align hoverable card">
 	<br>
-	<img class="responsive-img" src="../imgs/PsychoSharing(1).png""><br>
+	<img class="responsive-img" src="../imgs/PsychoSharing(1).png"><br>
 	<br>
 	<a class="waves-effect waves-light btn" id="conheca" href="#promo">Conheça</a>
 	<br>
@@ -68,7 +16,7 @@
 
 <div id="promo" class="hoverable card">
 	<div class="container">
-		<h1 class="amber-text text-accent-3 center-align" style="">Golden Circle</h1>
+		<h1 class="amber-text text-accent-3 center-align">Golden Circle</h1>
 		<h4 class="center-align white-text">do PsychoSharing</h4>
 		<hr>
 		<br>
@@ -78,7 +26,7 @@
 		</div>
 		
 		<div class="info">
-			<h5 class="right-align white-text">Uma plataforma <strong style="font-weight: 800;">colaborativa</strong> para a troca de informação e conhecimento entre <strong style="font-weight: 800;">profissionais</strong> da Psicologia.</h5>
+			<p class="right-align white-text">Uma plataforma <strong>colaborativa</strong> para a troca de informação e conhecimento entre <strong>profissionais</strong> da Psicologia.</p>
 		</div>
 
 		<br>
@@ -89,7 +37,7 @@
 		</div>
 
 		<div class="info">
-			<h5 class="right-align white-text">Facilitando a interação entre psicólogos através do <strong style="font-weight: 800;">compartilhamento</strong> de: descrição de exercícios psicológicos, relatos de caso, materiais e eventos de psicologia.</h5>
+			<p class="right-align white-text">Facilitando a interação entre psicólogos através do <strong>compartilhamento</strong> de: descrição de exercícios psicológicos, relatos de caso, materiais e eventos de psicologia.</p>
 		</div>
 
 		<br>
@@ -100,7 +48,7 @@
 		</div>
 
 		<div class="info">
-			<h5 class="right-align white-text"><strong style="font-weight: 800;">Sistemas Colaborativos</strong> utilizam a tecnologia a fim de <strong style="font-weight: 800;">aprimorar</strong> o trabalho dos usuários. Além disso, este conceito carece em estudos na <strong style="font-weight: 800;">Informática aplicada à Psicologia</strong>.</h5> 
+			<p class="right-align white-text"><strong>Sistemas Colaborativos</strong> utilizam a tecnologia a fim de <strong>aprimorar</strong> o trabalho dos usuários. Além disso, este conceito carece em estudos na <strong>Informática aplicada à Psicologia</strong>.</p> 
 		</div>
 
 		
@@ -109,8 +57,8 @@
 </div>
 
 
-<div class="hoverable card" style="padding: 5px;">
-<h1 class="center-align" style="font-weight: 100;">Comece a <strong class="indigo-text text-darken-2">compartilhar</strong> e <strong class="indigo-text text-darken-2">descobrir</strong> agora!</h1>
+<div class="hoverable card">
+<h1 class="center-align">Comece a <strong class="indigo-text text-darken-2">compartilhar</strong> e <strong class="indigo-text text-darken-2">descobrir</strong> agora!</h1>
 <div class="center-align">
 	<a class="waves-effect waves-light btn" href="/login">logar</a>
 	&nbsp;
@@ -123,7 +71,7 @@
 
 
 
-<footer class="card page-footer hoverable indigo darken-2" style="margin-bottom: 10px;">
+<footer class="card page-footer hoverable indigo darken-2" >
           <div class="container">
             <div class="row">
               <div class="col l6 s12">
@@ -152,8 +100,7 @@
 
 <script>
 
-	
-
+	// efeito de deslize ao clicar em "conheça"
 	var $doc = $('html, body');
 
 	$('#conheca').click(function() {
@@ -162,6 +109,7 @@
 	    }, 500);
 	    return false;
 	});
+
 </script>
 
 @stop

@@ -4,45 +4,42 @@
 
 @section('conteudo')
 
-
-
-<div class="hoverable card" style="padding: 20px;">
+<div class="hoverable card post-form">
 
 	<h3 class="center-align"><i class="fa fa-lightbulb-o"></i> Compartilhar exercícios e dicas</h3>
 	
-	<div id="errors" class="card" style="padding: 10px; padding-left: 20px; display:inline-block;"></div>
+	<div id="errors" class="card errors"></div>
 
 	<br>
+
+	<input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
+
+	<!-- inclusão de campos comuns  -->
+	@include('commom.tituloInput')
+
+	@include('commom.descricaoInput')
+
+	@include('commom.linhaInput')
 	
-	<!-- <form action="/exercicios/cadastrar" method="post"> -->
+	<br>
+	
+	<label>Torne sua publicação mais acessível, adicione palavras-chave (pressione enter para adicionar outras):</label>
+	
+	<div class="chips chips-initial" id="chips"></div>
 
-		<input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
- 
-		@include('commom.tituloInput')
+	<br>
 
-		@include('commom.descricaoInput')
+	<div class="center-align">
 
-		@include('commom.linhaInput')
+		<button class="btn" onclick="cadastrarExercicio()" id="submit">compartilhar</button>
 		
-		<br>
-		<label>Torne sua publicação mais acessível, adicione palavras-chave (pressione enter para adicionar outras):</label>
-		<div class="chips" id="chips"></div>
-
-		<br>
-
-		<div class="center-align">
-
-			<button class="btn" onclick="cadastrarExercicio()" id="submit">compartilhar</button>
-			
-		</div>
-
-
+	</div>
 	
 
 </div>	
 
 <br>
 
-<script src="{{ asset('js/posts.js') }}"></script>
+<script src="{{ asset('js/posts/exercicio.js') }}"></script>
 
 @stop
