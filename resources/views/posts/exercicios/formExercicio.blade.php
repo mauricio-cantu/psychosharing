@@ -31,14 +31,13 @@
 
 	<div class="center-align">
 
-		<button class="btn" onclick="cadastrarExercicio()" id="submit">compartilhar</button>
+		<button class="btn" id="submit">compartilhar</button>
 		
 	</div>
 	
 
 </div>	
 
-<br>
 
 <script src="{{ asset('js/posts/exercicio.js') }}"></script>
 

@@ -17,16 +17,24 @@
   margin-right: 20px; }
 
 .card {
-  padding: 20px; }
+  padding: 20px;
+  padding-bottom: 10px; }
 
 .post-form {
   padding-left: 40px;
-  padding-right: 40px; }
+  padding-right: 40px;
+  padding-bottom: 20px; }
+  @media only screen and (max-width: 1050px) {
+    .post-form {
+      padding: 10px; } }
 
 .errors {
   padding: 10px;
   padding-left: 20px;
   display: inline-block; }
+  @media only screen and (max-width: 1050px) {
+    .errors {
+      margin: 0 auto; } }
 
 #promo {
   background-color: #303f9f;

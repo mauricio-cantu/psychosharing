@@ -19,74 +19,79 @@ class PostController extends Controller
 {
    	public function cadastrarExercicio(ExercicioRequest $request)
     {
-      $post = Post::create([
+        // apenas cria um novo exercicio, sem persistir no banco
+        // caso a validação não passe, um JSON é retornado com os erros
+        $exercicio = new Exercicio($request->all());
+        
+        // caso a validação passe, o post é criado,
+        $post = Post::create([
                    'tipo'=>'exercicio',
                    'user_id'=>Auth::user()->id
-               ]);
+                ]);
         
-      $this->attachKeys($request, $post);
-
-      $exercicio = new Exercicio($request->all());
-         
-      $post->exercicio()->save($exercicio);
+        // as chaves são associadas a este post
+        $this->attachKeys($request, $post);
         
-      return response()->json(['status'=>'created'], 200); 
+        // aqui sim é persistido o exercicio no banco
+        // o exercicio()->save() persiste o exercicio no banco já o relacionando com o novo post
+        $post->exercicio()->save($exercicio);
+            
+        // JSON indicando sucesso é retornado
+        return response()->json(['status'=>'created'], 200); 
     }
 
     public function cadastrarMaterial(MaterialRequest $request)
     {
+        $material = new Material($request->all());
         
-      $post = Post::create([
+        $post = Post::create([
                     'tipo'=>'material',
                     'user_id'=>Auth::user()->id
                 ]);
 
-      $this->attachKeys($request, $post);
+        $this->attachKeys($request, $post);
 
-      $material = new Material($request->all());
+        $post->material()->save($material);
 
-      $post->material()->save($material);
-
-      return response()->json(['status'=>'created'], 200);
+        return response()->json(['status'=>'created'], 200);
     }
 
     public function cadastrarRelato(RelatoRequest $request)
     {
+        $relato = new Relato($request->all());
 
-      $post = Post::create([
-                    'tipo'=>'relato',
-                    'user_id'=>Auth::user()->id
-                ]);
+        $post = Post::create([
+                        'tipo'=>'relato',
+                        'user_id'=>Auth::user()->id
+                    ]);
 
-      $this->attachKeys($request, $post);
+        $this->attachKeys($request, $post);
 
-      $relato = new Relato($request->all());
+        $post->relato()->save($relato);
 
-      $post->relato()->save($relato);
-
-      return response()->json(['status'=>'created'], 200); 
+        return response()->json(['status'=>'created'], 200); 
     }
 
     public function cadastrarEvento(EventoRequest $request)
     {
-      $post = Post::create([
-                  'tipo'=>'evento',
-                  'user_id'=>Auth::user()->id
-              ]);
+        $evento = new Evento($dados);
+        
+        $post = Post::create([
+                    'tipo'=>'evento',
+                    'user_id'=>Auth::user()->id
+                ]);
 
-      $dados1 = $request->except('data');
+        $dados1 = $request->except('data');
 
-      $dataFormatada = ['data'=>implode("-",array_reverse(explode("/",$request->input('data'))))];
+        $dataFormatada = ['data'=>implode("-",array_reverse(explode("/",$request->input('data'))))];
 
-      $dados = array_merge($dados1, $dataFormatada);
+        $dados = array_merge($dados1, $dataFormatada);
 
-      $this->attachKeys($request, $post);
+        $this->attachKeys($request, $post);
 
-      $evento = new Evento($dados);
+        $post->evento()->save($evento);
 
-      $post->evento()->save($evento);
-
-      return response()->json(['status'=>'created'], 200);
+        return response()->json(['status'=>'created'], 200);
     }
 
     public function cadastrarFormExercicio()
@@ -119,25 +124,6 @@ class PostController extends Controller
 
     }
 
-    /* função antiga
-    public function attachKeys($request, $post)
-    {
-      // pega apenas o array de palavras chaves (isso retorna um array de arrays) 
-      $arrayTags = $request->only('palavras_chave');
-      // armazena na $tags o primeiro array (index 0)
-      // a função array_values permite acessar os valores do array através da posição
-      $tags = array_values($arrayTags)[0];
-
-      
-      // para cada valor do array de tags, pegamos o elemento 'tag',
-      // que contem de fato a palavra chave
-      foreach ($tags as $index) {
-          $p = PalavraChave::create(['palavra_chave'=>$index['tag']]);
-          // cada chave criada já é associada ao post
-          $post->chaves()->attach($p['id']);
-      }
-    } */
-
     public function attachKeys($request, $post)
     {
         // pega apenas o array de palavras chaves (isso retorna um array de arrays) 
@@ -157,17 +143,11 @@ class PostController extends Controller
             
             // se $key for nulo é porque a tag ainda não existe, 
             is_null($key) ? 
-            // então crio uma nova palavra chave com essa tag e adiciono ao array $novas
-            ($p = PalavraChave::create(['palavra_chave'=>$index['tag']]) AND $novas[] = $p['id']) : 
+            // então crio uma nova palavra chave com essa tag e adiciono seu id ao array $novas
+            ($p = PalavraChave::create(['palavra_chave'=>$index['tag']]) AND $novas[] = $p['id'])
             // caso não for nulo é porque a tag já existe, então apenas adiciona o id da mesma no array $existentes
+            : 
             $existentes[] = $key['id'];
-
-            //   if (is_null($key)) {
-            //       $p = PalavraChave::create(['palavra_chave'=>$index['tag']]);
-            //       $novas[] = $p['id'];
-            //   }else{
-            //       $existentes[] = $key['id'];
-            //   }
         }
 
         // junto os dois arrays de IDs de palavras chaves

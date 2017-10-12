@@ -22,6 +22,8 @@ class MaterialRequest extends FormRequest
      *
      * @return array
      */
+
+    // regras de validação
     public function rules()
     {
         return [
@@ -32,6 +34,7 @@ class MaterialRequest extends FormRequest
         ];
     }
 
+    // mensagem para cada tipo de erro
     public function messages()
     {
         return [
@@ -40,6 +43,7 @@ class MaterialRequest extends FormRequest
         ];
     }
 
+    // como os campos devem ser entitulados nas mensagens de erro
     public function attributes()
     {
         return [

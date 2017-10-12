@@ -1,4 +1,9 @@
 // cadastrar exercício através de AJAX post
+
+$('#submit').click(() => {
+	cadastrarExercicio();
+});
+
 function cadastrarExercicio(){
 	var titulo = $('#titulo').val();
 	var descricao = $('#descricao').val();
@@ -17,27 +22,24 @@ function cadastrarExercicio(){
 			_token: token
 		},
 		dataType: 'json',
-		success: function(data){
-			console.log(data);
+		success: (data) => {
+			console.log(data.responseJSON);
 			alertSuccess();			
 		},
-		error: function(data){
-			console.log(data.responseText);
-			showErrors(data);			
+		error: (data) => {
+			console.log(data.responseJSON);
 		}
 	});
 
 }
 
-function getDetails(id){
-
-	var myData;
+getDetails = (id) => {
 
 	$.ajax({
 		type: 'get',
 		url: '/testeJson/'+id,
 		dataType: 'json'
-	}).done(function(data){		
+	}).done((data) => {		
 		$('#chips').material_chip({data:data.keys});
 	});
 	

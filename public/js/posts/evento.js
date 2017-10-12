@@ -22,11 +22,11 @@ function cadastrarEvento(){
             link: link
 		},
 		dataType: 'json',
-		success: function(data){
+		success: (data) => {
 			console.log(data);
 			alertSuccess();			
 		},
-		error: function(data){
+		error: (data) => {
 			showErrors(data);			
 		}
 	});

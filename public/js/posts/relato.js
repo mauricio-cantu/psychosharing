@@ -18,12 +18,14 @@ function cadastrarRelato(){
             _token: token            
 		},
 		dataType: 'json',
-		success: function(data){
+		success: (data) => {
 			console.log(data);
 			alertSuccess();			
 		},
-		error: function(data){
+		error: (data) => {
 			showErrors(data);			
 		}
 	});
 }
+
+

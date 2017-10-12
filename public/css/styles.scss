@@ -1,4 +1,3 @@
-
 $bt-color: black;
 
 .nav-wrapper{ padding-left: 15px; }
@@ -23,15 +22,26 @@ $bt-color: black;
 
 .card{
     padding: 20px;
+    padding-bottom: 10px;
+    
 }
 
 .post-form{
     padding-left: 40px;
     padding-right: 40px; 
+    padding-bottom: 20px; 
+    @media only screen and (max-width : 1050px){
+        padding: 10px;
+    }
 }
 
 .errors{
-    padding: 10px; padding-left: 20px; display:inline-block;
+    padding: 10px;
+    padding-left: 20px;
+    display:inline-block;
+    @media only screen and (max-width : 1050px){
+        margin: 0 auto;
+    }
 }
 
 #promo{
