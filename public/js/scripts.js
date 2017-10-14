@@ -39,7 +39,7 @@ function logout(){
 
 // exibir erros de preenchimento de dados
 function showErrors(data){
-    var errors = data.responseJSON;
+    let errors = data.responseJSON;
     console.log(errors);
 
     $('#errors').empty()
@@ -52,9 +52,9 @@ function showErrors(data){
     $('#errors').append('</ul>');
 }
 
-// dialog de publicação compartilhada
-function alertSuccess(){
-    swal("Publicação compartilhada!", {
+// dialog de publicação compartilhada ou editada, depende do parâmetro que for passado ao chamar o método
+function alertSuccess(type){
+    swal(type == "cadastrar" ? "Publicação compartilhada!" : "Publicação editada!", {
         icon: "success",
         timer: 2500
     }).then(function(){

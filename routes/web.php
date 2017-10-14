@@ -24,6 +24,10 @@ Route::middleware('auth')->group(function(){
 		// (post) /exercicios/cadastrar : cadastra a publicação no banco
 		Route::post('cadastrar', 'PostController@cadastrarExercicio');
 
+		Route::get('editar/{id}', 'PostController@editarFormExercicio');
+
+		Route::put('editar/{id}', 'PostController@editarExercicio');		
+
 	});
 
 	Route::prefix('materiais')->group(function(){
@@ -57,7 +61,7 @@ use App\PalavraChave;
 
 // Rotas de teste
 Route::get('testeJson/{id}', function($id){
-	$post = Post::find($id)->evento()->first();
+	$post = Post::find($id)->exercicio()->first();
 	$keys = $post->post()->first()->chaves()->select('palavra_chave as tag')->get();
 	return response()->json(array(
 		'post'=>$post,

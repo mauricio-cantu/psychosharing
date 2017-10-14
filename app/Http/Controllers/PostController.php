@@ -23,7 +23,7 @@ class PostController extends Controller
         // caso a validação não passe, um JSON é retornado com os erros
         $exercicio = new Exercicio($request->all());
         
-        // caso a validação passe, o post é criado,
+        // caso a validação passe, o post é criado
         $post = Post::create([
                    'tipo'=>'exercicio',
                    'user_id'=>Auth::user()->id
@@ -33,11 +33,24 @@ class PostController extends Controller
         $this->attachKeys($request, $post);
         
         // aqui sim é persistido o exercicio no banco
-        // o exercicio()->save() persiste o exercicio no banco já o relacionando com o novo post
+        // o 'exercicio()->save()' persiste o exercicio no banco já o relacionando com o novo post
         $post->exercicio()->save($exercicio);
             
         // JSON indicando sucesso é retornado
         return response()->json(['status'=>'created'], 200); 
+    }
+
+    public function editarExercicio(ExercicioRequest $request, $id)
+    {  
+        $post = Post::find($id);
+
+        $this->attachKeys($request, $post);
+
+        $exercicio = $post->exercicio()->first();
+        
+        $exercicio->update($request->all());
+        
+        return response()->json($exercicio);
     }
 
     public function cadastrarMaterial(MaterialRequest $request)
@@ -96,7 +109,13 @@ class PostController extends Controller
 
     public function cadastrarFormExercicio()
     {
-        return view('posts.exercicios.formExercicio')->withAcao('cadastrar');
+        return view('posts.exercicios.formExercicio')->with('editar',false);
+    }
+
+    public function editarFormExercicio($id)
+    {
+        $post = Post::find($id);
+        return view('posts.exercicios.formExercicio')->with('editar',true)->withPost($post);
     }
 
     public function cadastrarFormMaterial()
@@ -154,7 +173,7 @@ class PostController extends Controller
         $allKeys = array_merge($existentes, $novas);
 
         // associo as tags aos posts passando o array de IDs (novas + existentes)
-        $post->chaves()->attach($allKeys);
+        $post->chaves()->sync($allKeys);
 
     }
 

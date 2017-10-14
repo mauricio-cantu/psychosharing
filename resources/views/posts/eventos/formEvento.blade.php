@@ -61,4 +61,6 @@
 	
 
 <script src="{{ asset('js/posts/evento.js') }}"></script>
+
+
 @stop

@@ -1,6 +1,6 @@
 <div class="input-field">
 
-	<input type="text" name="titulo" id="titulo" class="validate {{ $errors->has('titulo') ? 'invalid':'' }}" value="{{ old('titulo') ? old('titulo') : '' }}">
+	<input autofocus type="text" name="titulo" id="titulo" class="validate {{ $errors->has('titulo') ? 'invalid':'' }}" value="{{ old('titulo') ? old('titulo') : '' }}">
 	<label for="titulo">Título</label>
 
 	@if($errors->has('titulo'))

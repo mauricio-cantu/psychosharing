@@ -7,7 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Exercicio extends Model
 {
 
-	protected $fillable = ['post_id', 'titulo', 'descricao', 'linha_terapeutica'];
+    protected $fillable = ['post_id', 'titulo', 'descricao', 'linha_terapeutica'];
+    
+    // isso garante que quando um exercicio for editado, o updated_at do Post "pai" seja atualizado
+    protected $touches = ['post'];
 
 	public $timestamps = false;
 
