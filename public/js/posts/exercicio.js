@@ -13,10 +13,8 @@ submit = () => {
 	let token = $('#token').val();
 	let chips = $('#chips').material_chip('data');
 
-	let metodoHTTP = $('#form').attr('method');
+	let metodoHTTP = $('#method').val();
 	let url = $('#form').attr('action'); 
-
-	console.log(url);
 	
 	$.ajax({
 		type: metodoHTTP,
@@ -34,7 +32,25 @@ submit = () => {
 			alertSuccess(metodoHTTP === "post" ? "cadastrar" : "editar");			
 		},
 		error: (data) => {
-			console.log(data.responseJSON);
+			let erros = data.responseJSON;	
+
+			console.log(erros);
+			
+			if(erros.titulo){
+				$('#titulo').toggleClass('invalid', true);
+				$('#titulo').next().toggle(true);
+			}
+
+			if(erros.descricao){
+				$('#descricao').toggleClass('invalid', true);
+				$('#descricao').next().toggle(true);
+			}
+
+			if(erros.linha_terapeutica){
+				$('#linha').toggle(true);
+				
+			}
+			
 			showErrors(data);
 		}
 	}); 
@@ -49,7 +65,7 @@ getDetails = (id) => {
 		url: '/testeJson/'+id,
 		dataType: 'json'
 	}).done((data) => {		
-		$('#chips').material_chip({data:data.keys});
+		$('#chips').material_chip({data: data.keys});
 		$('#titulo').val(data.post.titulo);
 		$('#descricao').val(data.post.descricao);
 		$('#linha_terapeutica').val(data.post.linha_terapeutica);

@@ -12,9 +12,13 @@
 
 	<br>
 
-		<form action="{{ $editar ? '/exercicios/editar/'.$post->id : 'exercicios/cadastrar' }}" method="{{ $editar ? 'put':'post' }}" id="form">
+		<form action="{{ $editar ? '/exercicios/editar/'.$post->id : '/exercicios/cadastrar' }}" id="form">
 
+			<!-- input escondido que armazena o token de requisição post -->
 			<input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
+
+			<!-- input escondido que armazena o método HTTP que deve ser executado -->
+			<input type="hidden" id="method" value="{{ $editar ? 'put':'post' }}">
 
 			<!-- inclusão de campos comuns  -->
 			@include('commom.tituloInput')
@@ -45,18 +49,17 @@
 <script src="{{ asset('js/posts/exercicio.js') }}"></script>
 
 @if($editar)
+
 	<!-- O script abaixo só é executado quando a página é chamada para editar um exercício (quando '$editar' for true) -->
 	<script>
 
-		// quando a página for carregada, o método getDetails é executado para preencher os campos
-		$(()=>{
-			getDetails({{$post->id}});
+		// quando a página for carregada, o método getDetails é executado para preencher os campos com informações da publicação 
+		$(function(){
+			getDetails( {{ $post->id }} );
 		});
 
 	</script>
 
 @endif
 
-
 @stop
-

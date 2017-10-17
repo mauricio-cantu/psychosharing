@@ -4,12 +4,19 @@
 .container {
   width: 80%; }
 
-@media only screen and (max-width: 1050px) {
+@media only screen and (max-width: 992px) {
   header, main, footer, .container {
     width: 100%; }
 
   h1, h2, h3, h4, h5, h6 {
-    font-size: 140%; } }
+    font-size: 140%; }
+
+  #tabs, #result-tabs{
+    padding: 0;
+  }
+
+  p {
+    font-size: 1.1em; } }
 .btn {
   color: black; }
 
@@ -29,12 +36,7 @@
       padding: 10px; } }
 
 .errors {
-  padding: 10px;
-  padding-left: 20px;
-  display: inline-block; }
-  @media only screen and (max-width: 1050px) {
-    .errors {
-      margin: 0 auto; } }
+  display: none; }
 
 #promo {
   background-color: #303f9f;
@@ -64,6 +66,9 @@
   display: table-cell;
   padding-left: 20px; }
 
+p {
+  font-size: 1.7em; }
+
 .container > h1 {
   letter-spacing: 0.22em;
   margin-bottom: 0; }
@@ -74,5 +79,9 @@
 
 strong {
   font-weight: 800; }
+
+#tabs{
+  
+}
 
 /*# sourceMappingURL=styles.css.map */

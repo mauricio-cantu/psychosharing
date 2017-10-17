@@ -13,7 +13,9 @@ $(function(){
 		$(this).parent().find('span').hide();
 	});
 
-	$('#errors').hide();
+	$('#sem-linha').click(function(){
+		$('#linha_terapeutica').attr('disabled');
+	});
 	
 	disableLink();
 	
@@ -40,16 +42,15 @@ function logout(){
 // exibir erros de preenchimento de dados
 function showErrors(data){
     let errors = data.responseJSON;
-    console.log(errors);
 
-    $('#errors').empty()
-    .fadeIn('slow')
-    .append('Os campos abaixo devem ser preenchidos:<br>')
-    .append('<ul>');
-    $.each(errors, function(key, value){					
-        $('#errors').append('<li>'+value+'</li>');
-    });
-    $('#errors').append('</ul>');
+    // $('#errors').empty()
+    // .fadeIn('slow')
+    // .append('Os campos abaixo devem ser preenchidos:<br>')
+    // .append('<ul>');
+    // $.each(errors, function(key, value){					
+    //     $('#errors').append('<li>'+value+'</li>');
+    // });
+    // $('#errors').append('</ul>');
 }
 
 // dialog de publicação compartilhada ou editada, depende do parâmetro que for passado ao chamar o método

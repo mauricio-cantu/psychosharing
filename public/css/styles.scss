@@ -4,14 +4,18 @@ $bt-color: black;
 
 .container{ width: 80%; } 
 
-@media only screen and (max-width : 1050px) {
+@media only screen and (max-width : 992px) {
     header, main, footer, .container {
             width: 100%;
     }
 
     h1, h2, h3, h4, h5, h6{
         font-size: 140%;
-}
+    }
+
+    p{
+        font-size: 1.1em;   
+    }
 
 }
 .btn{
@@ -36,12 +40,7 @@ $bt-color: black;
 }
 
 .errors{
-    padding: 10px;
-    padding-left: 20px;
-    display:inline-block;
-    @media only screen and (max-width : 1050px){
-        margin: 0 auto;
-    }
+    display: none;
 }
 
 #promo{
@@ -78,6 +77,9 @@ $bt-color: black;
     padding-left: 20px;
 }
 
+p{
+    font-size: 1.7em;
+}
 
 .container > h1{
 	letter-spacing: 0.22em;

@@ -57,7 +57,7 @@
       <a href="" class="name white-text">{{Auth::user()->name}}</a>
       <a href="" class="white-text">{{Auth::user()->email}}</a>
       <hr>
-      <a href="" class="white-text">Configurações</a>
+      <a href="/users/edit-profile" class="white-text">Configurações</a>
     </div>
   </li>
   <li><a href="#!">First Sidebar Link</a></li>
@@ -89,12 +89,14 @@
       <ul class="right show-on-small hide-on-med-and-up">
         <a href="\home"><i class="material-icons" style="display: inline;">home</i></a>
       </ul>     
+
+      <a href="/" alt="home" title="home" class="brand-logo center hide-on-small-only"><i class="material-icons" style="display: inline;">home</i> PsychoSharing</a>
       
       <ul class="right hide-on-med-and-down">        
-        <li><a class="btn dropdown-button" data-activates="options">{{ Auth::user()->name }}</a></li>
+        <li><a class="btn waves-effect waves-light dropdown-button" data-activates="options">{{ Auth::user()->name }}</a></li>
 
         <ul id='options' class='dropdown-content' style="width: 300px !important">
-          <li><a href="#!">Configurações</a></li>
+          <li><a href="/users/edit-profile">Configurações</a></li>
           <li><a href="#!">Dashboard</a></li>
           <li class="divider"></li>
           <li><a onclick="event.preventDefault();

@@ -107,6 +107,11 @@ class PostController extends Controller
         return response()->json(['status'=>'created'], 200);
     }
 
+    public function getResults($key){
+        $posts = PalavraChave::wherePalavraChave($key)->first()->post()->get();
+        return view('posts.results')->withPosts($posts);
+    }
+
     public function cadastrarFormExercicio()
     {
         return view('posts.exercicios.formExercicio')->with('editar',false);

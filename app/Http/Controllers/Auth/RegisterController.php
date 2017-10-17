@@ -53,7 +53,8 @@ class RegisterController extends Controller
             'password' => 'required|string|min:6|confirmed',
             'crp'=>'required|string|unique:users',
             'linha_teorica'=>'required|string',
-            'cidade'=>'required|string'
+            'cidade'=>'required|string',
+            'sexo'=>'required'
         ], [
             'required' => 'O campo :attribute deve ser preenchido!',
             'password.confirmed' => 'As senhas não são iguais!',

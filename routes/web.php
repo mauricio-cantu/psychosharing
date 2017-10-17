@@ -54,6 +54,20 @@ Route::middleware('auth')->group(function(){
 
 	});
 
+	Route::prefix('users')->group(function(){
+
+		Route::get('edit-profile', 'UserController@editProfileForm');
+
+		Route::post('edit-profile', 'UserController@editProfile');
+
+	});
+
+	Route::prefix('posts')->group(function(){
+
+		Route::get('results/{key}','PostController@getResults');
+
+	});
+
 });
 
 use App\Post;
