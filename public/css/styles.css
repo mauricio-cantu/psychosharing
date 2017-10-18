@@ -11,10 +11,6 @@
   h1, h2, h3, h4, h5, h6 {
     font-size: 140%; }
 
-  #tabs, #result-tabs{
-    padding: 0;
-  }
-
   p {
     font-size: 1.1em; } }
 .btn {
@@ -31,7 +27,7 @@
   padding-left: 40px;
   padding-right: 40px;
   padding-bottom: 20px; }
-  @media only screen and (max-width: 1050px) {
+  @media only screen and (max-width: 992px) {
     .post-form {
       padding: 10px; } }
 
@@ -42,6 +38,8 @@
   background-color: #303f9f;
   padding-top: 10px;
   padding-bottom: 20px; }
+  #promo p {
+    font-size: 1.4em; }
 
 .circulo {
   border-radius: 50%;
@@ -51,7 +49,7 @@
   width: 150px;
   text-align: center;
   transition: all 0.3s ease; }
-  @media only screen and (max-width: 1050px) {
+  @media only screen and (max-width: 992px) {
     .circulo {
       height: 30%;
       width: 30%; } }
@@ -64,7 +62,7 @@
 .info {
   vertical-align: middle;
   display: table-cell;
-  padding-left: 20px; }
+  padding-left: 70px; }
 
 p {
   font-size: 1.7em; }
@@ -80,8 +78,16 @@ p {
 strong {
   font-weight: 800; }
 
-#tabs{
-  
-}
+footer p {
+  font-size: 1.1em; }
+
+#register {
+  padding: 20px; }
+
+#login {
+  padding: 20px;
+  width: 350px;
+  margin: auto;
+  margin-top: 30px; }
 
 /*# sourceMappingURL=styles.css.map */

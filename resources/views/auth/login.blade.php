@@ -1,18 +1,8 @@
 @extends('principal.principal')
-
-
 @section('conteudo')
 
-<style type="text/css">
-	
-	main{
-		padding-left: 0;
-	}
 
-</style>
-
-<div class="container" style="width: 350px;">
-	<div class="card hoverable" style="padding: 20px;">
+	<div class="card hoverable" id="login">
 		<h4 class="center-align" style="font-weight: 300">Login</h4> 
 		
 		<br>		
@@ -54,7 +44,7 @@
 
 		</form>
 	</div>
-</div>
+
 
 
 @endsection

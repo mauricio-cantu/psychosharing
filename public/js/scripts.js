@@ -28,15 +28,7 @@ $(function(){
 });
 
 function logout(){
-	swal("Realizar logout?",{
-		icon: "info",
-		buttons:{
-			cancel: true,
-			confirm: true
-		},
-		confirmButtonText: "Sim",
-		cancelButtonText: "Cancelar",
-	});
+	alert('Logout?');
 }
 
 // exibir erros de preenchimento de dados

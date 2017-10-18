@@ -11,9 +11,6 @@
 	<br>
 </div>
 
-
-
-
 <div id="promo" class="hoverable card">
 	<div class="container">
 		<h1 class="amber-text text-accent-3 center-align">Golden Circle</h1>
@@ -102,6 +99,8 @@
 
 	// efeito de deslize ao clicar em "conheça"
 	var $doc = $('html, body');
+
+	console.log("dadas");
 
 	$('#conheca').click(function() {
 	    $doc.animate({

@@ -35,7 +35,7 @@
       <nav class="z-depth-4">
           <div class="nav-wrapper">
 
-            <a href="/" title="Home" class="brand-logo" style="padding-left: 15px;"><i class="fa fa-home"></i></a>
+            <a href="/" title="Home" class="brand-logo center"><i style="display: inline;" class="fa fa-home"></i></a>
             <ul class="right hide-on-med-and-down">
                   <li><a href="/login"><i class="fa fa-check"></i> Login</a></li>
                   <li><a href="/register"><i class="fa fa-plus"></i> Cadastro</a></li>

@@ -2,16 +2,8 @@
 
 @section('conteudo')
 
-<style type="text/css">
-    
-    main{
-        padding-left: 0;
-    }
 
-</style>
-
-
-  <div class="card hoverable" style="padding: 20px;">
+  <div class="card hoverable" id="register">
 
     <h4 class="center-align indigo-text">Você está a poucos passos de compartilhar seu conhecimento!</h4>
     <h6 class="center-align">Informe seus dados abaixo</h6>
@@ -23,7 +15,7 @@
     {{ csrf_field() }}
 
     <div class="row">
-      <div class="input-field col s4">
+      <div class="input-field col l4 s12">
 
         <input id="nome" type="text" name="name" class="validate {{ $errors->has('name') ? 'invalid':'' }}" value="{{ old('name') ? old('name') : '' }}" autofocus="">
 
@@ -36,7 +28,7 @@
         <label for="nome">Nome completo</label>
 
       </div>
-      <div class="input-field col s4">
+      <div class="input-field col s6 l4">
 
         <input id="crp" type="text" name="crp" class="validate {{ $errors->has('crp') ? 'invalid':'' }}" value="{{ old('crp') ? old('crp') : '' }}">
 
@@ -50,7 +42,7 @@
         
       </div>
 
-       <div class="input-field col s4">
+       <div class="input-field col s6 l4">
             <select id="sexo" name="sexo" required="">
                 <option value="" disabled selected>Escolha</option>
                   <option value="Feminino">Feminino</option>
@@ -111,14 +103,18 @@
     </div>
 
     <div class="input-field col s6">
-    <input id="teoria" type="text" placeholder="Ex.: Terapia Cognitivo Comportamental" name="linha_teorica" class="validate {{ $errors->has('linha_teorica') ? 'invalid':'' }}" value="{{ old('linha_teorica') ? old('linha_teorica') : '' }}">
-    @if ($errors->has('linha_teorica'))
-    <span class="red-text">
-    {{ $errors->first('linha_teorica') }}
-    </span>
-    @endif
-    <label for="teoria">Qual linha terapêutica você aplica?</label>
-    </div>
+      <select id="linha_terapeutica" name="linha_terapeutica" required="">
+          <option value="" disabled selected>Escolha</option>
+          <option value="Terapia Cognitivo-Comportamental">Terapia Cognitivo-Comportamental</option>
+          <option value="Psicanálise">Psicanálise</option>
+          <option value="Análise junguiana">Análise junguiana</option>
+          <option value="Beaviorismo">Beaviorismo</option>
+          <option value="Humanismo">Humanismo</option>
+          <option value="Psicoterapia Corporal">Psicoterapia Corporal</option>
+          <option value="Transpessoal">Transpessoal</option>
+          <option value="Mindfullness Psychology">Mindfullness Psychology</option>
+      </select>
+      <label>Linha terapêutica</label>
     </div>
 
     <div class="center-align">
