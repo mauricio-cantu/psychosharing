@@ -52,7 +52,7 @@ class RegisterController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
             'crp'=>'required|string|unique:users',
-            'linha_teorica'=>'required|string',
+            'linha_terapeutica'=>'required|string',
             'cidade'=>'required|string',
             'sexo'=>'required'
         ], [
@@ -63,7 +63,7 @@ class RegisterController extends Controller
         ], [
             'name' => 'nome',
             'password' => 'senha',
-            'linha_teorica'=>'linha terapêutica',
+            'linha_terapeutica'=>'linha terapêutica',
             'crp'=>'CRP'
         ]);
     }
@@ -81,7 +81,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'cidade' => $data['cidade'],
-            'linha_teorica' => $data['linha_teorica'],
+            'linha_teorica' => $data['linha_terapeutica'],
             'crp' => $data['crp'],
             'sexo'=>$data['sexo']
         ]);
