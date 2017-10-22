@@ -35,7 +35,7 @@ class UserController extends Controller
             return redirect('users/edit-profile')->withErrors($validator)->withInput();
         }else{
             $user->update($request->all());
-            return redirect('home');
+            return redirect('home')->with('status', 'Perfil editado com sucesso!');
         }
 
     }

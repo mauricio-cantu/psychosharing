@@ -1,3 +1,5 @@
+@import "materialize";
+
 $bt-color: black;
 
 .nav-wrapper{ padding-left: 15px; }
@@ -111,4 +113,12 @@ footer p{
     width: 350px;
     margin: auto;
     margin-top: 30px;
+}
+
+.success{
+    background-color: $success-color;
+    padding: 10px;
+    color: white;
+    display: inline;
+    margin-bottom: 10px;
 }

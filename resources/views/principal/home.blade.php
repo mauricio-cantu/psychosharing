@@ -14,6 +14,15 @@
     </ul>
   </div>
 
+    @if(session('status'))
+        <br>
+        <div class="success z-depth-4">
+            <i class="fa fa-check"></i> {{ session('status') }}
+        </div>
+        <br>
+        <br>
+    @endif
+
     <div class="card">
         
         @if( Auth::user()->sexo == "Masculino" )
