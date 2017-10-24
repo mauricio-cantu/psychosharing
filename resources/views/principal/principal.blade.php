@@ -50,28 +50,27 @@
 <ul id="slide-out" class="side-nav">
   <li>
     <div class="user-view">
-      <div class="background indigo darken-2">
-        
-      </div>
+      <div class="background indigo darken-2"></div>
       <a href=""><img class="circle" src="{{ asset('imgs/profile.jpg') }}"></a>
-      <a href="" class="name white-text">{{Auth::user()->name}}</a>
-      <a href="" class="white-text">{{Auth::user()->email}}</a>
       <hr>
-      <a href="/users/edit-profile" class="white-text">Configurações</a>
+      <a href="#" class="white-text"><i class="fa fa-user"></i>  {{Auth::user()->name}}</a>
+      <a href="/users/edit-profile" class="white-text"><i class="fa fa-pencil"></i>  Informações pessoais</a>
+      <a href="#" class="white-text"><i class="fa fa-th-list"></i>  Gerenciar postagens</a>
     </div>
   </li>
-  <li><a href="#!">First Sidebar Link</a></li>
-  <li><a href="#!">Second Sidebar Link</a></li>
+  <li><a href="#!"><i class="material-icons">date_range</i> Eventos</a></li>
+  <li><a href="#!"><i class="material-icons">casino</i> Exercícios e dicas</a></li>
+  <li><a href="#!"><i class="material-icons">format_align_left</i> Relatos de caso</a></li>
+  <li><a href="#!"><i class="material-icons">book</i> Materiais</a></li>
+  <div class="divider"></div>
   <li class="no-padding">
     <ul class="collapsible collapsible-accordion">
       <li>
-        <a class="collapsible-header">Dropdown<i class="material-icons">arrow_drop_down</i></a>
+        <a class="collapsible-header">PsychoSharing<i class="material-icons">arrow_drop_down</i></a>
         <div class="collapsible-body">
           <ul>
-            <li><a href="#!">First</a></li>
-            <li><a href="#!">Second</a></li>
-            <li><a href="#!">Third</a></li>
-            <li><a href="#!">Fourth</a></li>
+            <li><a href="#!">Usuários cadastrados</a></li>
+            <li><a href="#!">Artigo</a></li>
           </ul>
         </div>
       </li>

@@ -5,4 +5,3 @@
 	<span class="errors red-text">Favor preencher este campo</span>
 
 </div>
-<br>

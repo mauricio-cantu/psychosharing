@@ -6977,4 +6977,8 @@ footer p {
   display: inline;
   margin-bottom: 10px; }
 
+.user-view a{
+  display: block;
+}
+
 /*# sourceMappingURL=styles.css.map */

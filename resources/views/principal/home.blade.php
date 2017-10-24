@@ -35,6 +35,16 @@
 
         <p class="center">O que deseja descobrir hoje?</p>
         
+        
+            <div class="input-field row">
+                <form action="/posts/results" method="get">
+                    <input required="" name="key" type="text" class="validate col l11"/>
+                    <button type="submit" class="btn right"><i class="fa fa-search"></i> </button>
+                </form>
+            </div>
+        
+        
+        
       
 
 

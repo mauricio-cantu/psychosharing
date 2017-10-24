@@ -9,7 +9,9 @@ class Material extends Model
 
 	protected $table = "materiais";
 
-	protected $fillable = ['post_id', 'titulo', 'descricao', 'link', 'anexo'];
+    protected $fillable = ['post_id', 'titulo', 'descricao', 'link', 'anexo'];
+    
+    protected $touches = ['post'];
 
     public function post()
     {

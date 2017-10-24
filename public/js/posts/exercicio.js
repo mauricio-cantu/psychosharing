@@ -45,11 +45,6 @@ submit = () => {
 				$('#descricao').toggleClass('invalid', true);
 				$('#descricao').next().toggle(true);
 			}
-
-			if(erros.linha_terapeutica){
-				$('#linha').toggle(true);
-				
-			}
 			
 			showErrors(data);
 		}

@@ -64,7 +64,7 @@ Route::middleware('auth')->group(function(){
 
 	Route::prefix('posts')->group(function(){
 
-		Route::get('results/{key}','PostController@getResults');
+		Route::get('results','PostController@getResults');
 
 	});
 

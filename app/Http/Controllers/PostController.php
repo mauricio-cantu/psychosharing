@@ -107,9 +107,33 @@ class PostController extends Controller
         return response()->json(['status'=>'created'], 200);
     }
 
-    public function getResults($key){
-        $posts = PalavraChave::wherePalavraChave($key)->first()->post()->get();
-        return view('posts.results')->withPosts($posts);
+    public function getResults(Request $request){
+        $key = $request->get('key');
+        $dbKey = PalavraChave::wherePalavraChave($key)->first();
+        // caso a chave não seja encontrada, o usuaro é redirecionado pra paagina de erro 404 
+        if(is_null($dbKey)){
+            return view('errors.404');
+        }
+        
+        // caso seja encontrada, é retornado todos os posts com essa palavra chave
+        $posts = $dbKey->post()->get();
+
+        // aqui é armazenado em variaveis o numero de cada tipo de post com essa palavra chave
+        $numExercicios = $posts->where('tipo','exercicio')->count();
+        $numEventos = $posts->where('tipo','evento')->count();
+        $numRelatos = $posts->where('tipo','relato')->count();
+        $numMateriais = $posts->where('tipo','material')->count();
+
+        // essas variaveis são passadas a um array
+        $counts = array(
+            'exercicios'=>$numExercicios,
+            'relatos'=>$numRelatos,
+            'eventos'=>$numEventos,
+            'materiais'=>$numMateriais
+        );
+
+        // view de resultado é retornada contendo os posts relacionados e a quantidade de cada tipo
+        return view('posts.results')->withPosts($posts)->withCounts($counts);
     }
 
     public function cadastrarFormExercicio()

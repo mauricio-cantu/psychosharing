@@ -12,6 +12,3 @@
 	@endif
 
 </div>
-
-<input type="checkbox" id="noLink" class="filled-in">
-<label for="noLink">Não possuo link</label>

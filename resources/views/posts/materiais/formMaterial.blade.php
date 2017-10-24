@@ -29,8 +29,6 @@
         		<input class="file-path validate anexo" type="text">
       		</div>
    		</div>
-        	<input type="checkbox" id="noFile" class="filled-in">
-        	<label for="noFile">Não possuo arquivo</label>
 
    		@if ($errors->has('anexo'))
 		          <span class="red-text">
@@ -38,6 +36,12 @@
 		          </span>
 		          <br>
         	@endif
+
+			<br>
+			
+			<label>Torne sua publicação mais acessível, adicione palavras-chave (pressione enter para adicionar outras)</label>
+			
+			<div class="chips chips-initial" id="chips"></div>
 
    		<div class="center-align">
 

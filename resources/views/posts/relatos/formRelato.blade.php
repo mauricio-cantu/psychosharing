@@ -30,8 +30,12 @@
 		</div>
 
 		@include('commom.linhaInput')
-	
-		@include('commom.palavrasChavesInput')
+
+		<br>
+
+		<label>Torne sua publicação mais acessível, adicione palavras-chave (pressione enter para adicionar outras)</label>
+			
+		<div class="chips chips-initial" id="chips"></div>
 
 
 		<div class="center-align">

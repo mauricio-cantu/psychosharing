@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Relato extends Model
 {
 
-	protected $fillable = ['post_id', 'titulo', 'conteudo', 'linha_terapeutica'];
+    protected $fillable = ['post_id', 'titulo', 'conteudo', 'linha_terapeutica'];
+    
+    protected $touches = ['post'];
 
 	public $timestamps = false;
 

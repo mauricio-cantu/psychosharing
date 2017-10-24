@@ -13,7 +13,3 @@
 <label>Linha terapêutica</label>
 </div>
 <span class="errors red-text" id="linha">Favor preencher este campo</span>
-<br>
-
-<input type="checkbox" id="sem-linha" class="filled-in">
-<label for="sem-linha">Não está</label>
