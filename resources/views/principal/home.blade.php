@@ -33,7 +33,7 @@
             <h2 class="indigo-text text-darken-2 center-align">Olá, {{ Auth::user()->name }}!</h2>
         @endif
 
-        <p class="center">O que deseja descobrir hoje?</p>
+        <p class="center">O que deseja descobrir hoje? Busque abaixo por palavra-chave!</p>
         
         
             <div class="input-field row">
@@ -42,12 +42,17 @@
                     <button type="submit" class="btn right"><i class="fa fa-search"></i> </button>
                 </form>
             </div>
-        
-        
-        
-      
+    </div>
 
-
+    <center>
+        <div class="label z-depth-3">
+            {{ Auth::user()->linha_teorica }}
+        </div>
+    </center>
+    <div class="row" id="lista-relacionados">
+    @foreach($posts as $post)
+        @include('commom.thumbnail-post')
+    @endforeach
     </div>
 
 

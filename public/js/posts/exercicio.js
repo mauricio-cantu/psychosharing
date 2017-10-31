@@ -57,12 +57,13 @@ getDetails = (id) => {
 	
 	$.ajax({
 		type: 'get',
-		url: '/testeJson/'+id,
+		url: '/exercicios/ajax/'+id,
 		dataType: 'json'
 	}).done((data) => {		
+		console.log(data);
 		$('#chips').material_chip({data: data.keys});
 		$('#titulo').val(data.post.titulo);
-		$('#descricao').val(data.post.descricao);
+		$('#descricao').val(data.exercicio.descricao);
 		$('#linha_terapeutica').val(data.post.linha_terapeutica);
 		$('#linha_terapeutica').material_select();		
 	}).fail((data) => {

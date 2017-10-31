@@ -43,6 +43,8 @@
         	@endif
 		</div>
 
+		@include('commom.linhaInput')
+
 		@include('commom.descricaoInput')
 
 		@include('commom.linkInput')

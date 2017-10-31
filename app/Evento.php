@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Evento extends Model
 {
-    protected $fillable = ['post_id', 'titulo', 'descricao', 'local', 'data', 'link'];
+    protected $fillable = ['post_id', 'descricao', 'local', 'data', 'link'];
     
     protected $touches = ['post'];
 

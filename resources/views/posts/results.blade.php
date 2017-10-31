@@ -25,10 +25,35 @@
         <li class="tab col s3"><a href="#materiais">Materiais <span class="badge indigo white-text">{{ $counts['materiais'] }}</span></a></li>
     </ul>
     <br>
-    <div id="exercicio" class="col s12 blue">Test 1</div>
-    <div id="eventos" class="col s12 red">Test 2</div>
-    <div id="relatos" class="col s12 cyan">Test 2</div>
-    <div id="materiais" class="col s12 green">Test 4</div>
+    <div id="exercicio">
+        <div class="row">
+            @foreach($posts->where('tipo','exercicio') as $post)
+                @include('commom.thumbnail-post')
+            @endforeach
+        </div>
+
+    </div>
+    <div id="eventos">
+        <div class="row">
+            @foreach($posts->where('tipo','evento') as $post)
+                @include('commom.thumbnail-post')
+            @endforeach
+        </div>
+    </div>
+    <div id="relatos">
+        <div class="row">
+            @foreach($posts->where('tipo','relato') as $post)
+                @include('commom.thumbnail-post')
+            @endforeach
+        </div>
+    </div>
+    <div id="materiais">
+        <div class="row">
+            @foreach($posts->where('tipo','material') as $post)
+                @include('commom.thumbnail-post')
+            @endforeach
+        </div>
+    </div>
 </div>
 
 

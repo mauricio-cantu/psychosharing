@@ -83,7 +83,7 @@ $bt-color: black;
 }
 
 p{
-    font-size: 1.7em;
+    font-size: 1.3em;
 }
 
 .container > h1{
@@ -121,4 +121,21 @@ footer p{
     color: white;
     display: inline;
     margin-bottom: 10px;
+}
+
+.label{
+    font-size: 1.3em;
+    display: inline-block;
+    background-color: $primary-color;
+    padding: 5px;
+    color: white;
+}
+#lista-relacionados{
+    .card .card-content{
+        padding: 6px;
+        .info-post{
+            color: #CFCFCF;
+            font-size: 0.9em;
+        }
+    }
 }

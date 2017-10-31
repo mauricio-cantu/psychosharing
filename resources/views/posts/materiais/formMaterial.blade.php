@@ -17,6 +17,8 @@
 
 		@include('commom.descricaoInput')
 
+		@include('commom.linhaInput')
+
 		@include('commom.linkInput')
 		
 

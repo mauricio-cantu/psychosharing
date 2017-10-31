@@ -4,12 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Exercicio;
+use App\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
     
+    public function index(){
+        $linha = Auth::user()->linha_teorica;
+        $postsRelacionados = Post::whereLinhaTerapeutica($linha)->take(6)->get();
+        return view('principal.home')->withPosts($postsRelacionados);
+    }
+
     public function editProfileForm(){
         $user = Auth::user();
         return view('users.editProfile')->withUser($user);
@@ -17,6 +25,7 @@ class UserController extends Controller
 
     public function editProfile(Request $request){
         $user = Auth::user();
+
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',            
             'crp'=>'required|string',  

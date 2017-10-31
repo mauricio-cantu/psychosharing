@@ -53,8 +53,8 @@
       <div class="background indigo darken-2"></div>
       <a href=""><img class="circle" src="{{ asset('imgs/profile.jpg') }}"></a>
       <hr>
-      <a href="#" class="white-text"><i class="fa fa-user"></i>  {{Auth::user()->name}}</a>
-      <a href="/users/edit-profile" class="white-text"><i class="fa fa-pencil"></i>  Informações pessoais</a>
+      <a href="#" class="white-text"><i class="fa fa-user"></i>  {{Auth::user()->name}}</a><br> 
+      <a href="/users/edit-profile" class="white-text"><i class="fa fa-pencil"></i>  Informações pessoais</a><br>
       <a href="#" class="white-text"><i class="fa fa-th-list"></i>  Gerenciar postagens</a>
     </div>
   </li>

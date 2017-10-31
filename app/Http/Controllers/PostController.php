@@ -21,12 +21,14 @@ class PostController extends Controller
     {
         // apenas cria um novo exercicio, sem persistir no banco
         // caso a validação não passe, um JSON é retornado com os erros
-        $exercicio = new Exercicio($request->all());
+        $exercicio = new Exercicio($request->except('titulo', 'linha_terapeutica'));
         
         // caso a validação passe, o post é criado
         $post = Post::create([
                    'tipo'=>'exercicio',
-                   'user_id'=>Auth::user()->id
+                   'user_id'=>Auth::user()->id,
+                   'titulo'=>$request->input('titulo'),
+                   'linha_terapeutica'=>$request->input('linha_terapeutica')
                 ]);
         
         // as chaves são associadas a este post
@@ -44,11 +46,13 @@ class PostController extends Controller
     {  
         $post = Post::find($id);
 
+        $post->update($request->only('titulo', 'linha_terapeutica'));
+
         $this->attachKeys($request, $post);
 
         $exercicio = $post->exercicio()->first();
         
-        $exercicio->update($request->all());
+        $exercicio->update($request->except('titulo', 'linha_terapeutica'));
         
         return response()->json($exercicio);
     }

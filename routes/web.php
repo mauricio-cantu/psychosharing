@@ -1,8 +1,12 @@
 <?php
 
+
+use App\Post;
+use App\PalavraChave;
+
 // Redireciona o usuário convidado para a página de apresentação e o usuário autenticado para a página home   
 Route::get('/', function () {
-	return Auth::guest() ? view('principal.welcome') : view('principal.home');
+	return Auth::guest() ? view('principal.welcome') : redirect()->action('UserController@index');
 });
 
 // Rotas de autenticação (login, registro, ...)
@@ -11,9 +15,7 @@ Auth::routes();
 // Rotas acessiveis apenas com autenticação através do middleware 'auth'
 Route::middleware('auth')->group(function(){
 
-	Route::get('home', function(){
-		return view('principal.home');
-	});
+	Route::get('home', 'UserController@index');
 
 	// Rotas com o prefixo 'exercicios/'
 	Route::prefix('exercicios')->group(function(){
@@ -26,7 +28,19 @@ Route::middleware('auth')->group(function(){
 
 		Route::get('editar/{id}', 'PostController@editarFormExercicio');
 
-		Route::put('editar/{id}', 'PostController@editarExercicio');		
+		Route::put('editar/{id}', 'PostController@editarExercicio');	
+		
+		// método que é acessado via AJAX para recuperar as informações de um exericio
+		Route::get('ajax/{id}', function($id){
+			$post = Post::find($id);
+			$exercicio = $post->exercicio()->first();
+			$keys = $post->chaves()->select('palavra_chave as tag')->get();
+			return response()->json(array(
+				'post'=>$post,
+				'exercicio'=>$exercicio,
+				'keys'=>$keys
+			));	
+		});
 
 	});
 
@@ -70,18 +84,7 @@ Route::middleware('auth')->group(function(){
 
 });
 
-use App\Post;
-use App\PalavraChave;
 
-// Rotas de teste
-Route::get('testeJson/{id}', function($id){
-	$post = Post::find($id)->exercicio()->first();
-	$keys = $post->post()->first()->chaves()->select('palavra_chave as tag')->get();
-	return response()->json(array(
-		'post'=>$post,
-		'keys'=>$keys
-	));
-});
 
 Route::get('jsonView', function(){
 	return view('posts.exercicios.testeJson');
