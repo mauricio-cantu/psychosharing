@@ -51,7 +51,7 @@
   <li>
     <div class="user-view">
       <div class="background indigo darken-2"></div>
-      <a href=""><img class="circle" src="{{ asset('imgs/profile.jpg') }}"></a>
+      <a style="color: white;" href=""><i class="medium material-icons">account_circle</i></a>
       <hr>
       <a href="#" class="white-text"><i class="fa fa-user"></i>  {{Auth::user()->name}}</a><br> 
       <a href="/users/edit-profile" class="white-text"><i class="fa fa-pencil"></i>  Informações pessoais</a><br>
