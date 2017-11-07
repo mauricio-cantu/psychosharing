@@ -13,11 +13,10 @@ submit = () => {
 	let token = $('#token').val();
 	let chips = $('#chips').material_chip('data');
 
-	let metodoHTTP = $('#method').val();
 	let url = $('#form').attr('action'); 
 	
 	$.ajax({
-		type: metodoHTTP,
+		type: 'post',
 		url: url,
 		data: {
 			titulo: titulo,
@@ -29,7 +28,7 @@ submit = () => {
 		dataType: 'json',
 		success: (data) => {
 			console.log(data.responseJSON);
-			alertSuccess(metodoHTTP === "post" ? "cadastrar" : "editar");			
+			alertSuccess();			
 		},
 		error: (data) => {
 			let erros = data.responseJSON;	

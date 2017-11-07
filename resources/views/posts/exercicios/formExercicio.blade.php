@@ -6,9 +6,8 @@
 
 <div class="hoverable card post-form">
 
-	<h3 class="center-align" id="action"><i class="fa fa-lightbulb-o"></i> {{ $editar ? 'Editar exercício' : 'Cadastrar exercícios e dicas'}}</h3>
-	
-	<div id="errors" class="card errors"></div>
+	<h3 class="center-align" id="action"><i class="fa fa-lightbulb-o"></i> {{ $editar ? 'Editar exercício' : 'Compartilhar exercícios'}}</h3>
+
 
 	<br>
 
@@ -16,9 +15,6 @@
 
 			<!-- input escondido que armazena o token de requisição post -->
 			<input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
-
-			<!-- input escondido que armazena o método HTTP que deve ser executado -->
-			<input type="hidden" id="method" value="{{ $editar ? 'put':'post' }}">
 
 			<!-- inclusão de campos comuns  -->
 			@include('commom.tituloInput')
@@ -31,13 +27,13 @@
 			
 			<label>Torne sua publicação mais acessível, adicione palavras-chave (pressione enter para adicionar outras)</label>
 			
-			<div class="chips chips-initial" id="chips"></div>
+			<div class="chips" id="chips"></div>
 
 			<br>
 
 			<div class="center-align">
 
-				<button class="btn" type="submit" id="submit">{{ $editar ? 'editar' : 'cadastrar'}}</button>
+				<button class="btn" type="submit" id="submit">Concluir</button>
 				
 			</div>
 

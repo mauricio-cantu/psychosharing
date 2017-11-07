@@ -1,4 +1,4 @@
-<div class="col s12 m4">
+<div class="col s12 m4" id="thumbnail">
           <div class="card indigo darken-1">
             <div class="card-content white-text">
               <span class="card-title">{{$post->titulo}}</span>

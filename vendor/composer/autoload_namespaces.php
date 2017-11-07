@@ -11,4 +11,7 @@ return array(
     'Mockery' => array($vendorDir . '/mockery/mockery/library'),
     'JakubOnderka\\PhpConsoleHighlighter' => array($vendorDir . '/jakub-onderka/php-console-highlighter/src'),
     'JakubOnderka\\PhpConsoleColor' => array($vendorDir . '/jakub-onderka/php-console-color/src'),
+    'Imagine' => array($vendorDir . '/imagine/imagine/lib'),
+    'Folklore\\Image\\Tests' => array($vendorDir . '/folklore/image/tests'),
+    'Folklore\\Image\\' => array($vendorDir . '/folklore/image/src'),
 );

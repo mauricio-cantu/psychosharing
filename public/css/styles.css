@@ -6984,10 +6984,11 @@ footer p {
   padding: 5px;
   color: white; }
 
-#lista-relacionados .card .card-content {
-  padding: 6px; }
-  #lista-relacionados .card .card-content .info-post {
-    color: #CFCFCF;
-    font-size: 0.9em; }
+#thumbnail .card {
+  padding: 10px; }
+  #thumbnail .card .card-content {
+    padding: 10px; }
+    #thumbnail .card .card-content p {
+      font-size: 1em; }
 
 /*# sourceMappingURL=styles.css.map */

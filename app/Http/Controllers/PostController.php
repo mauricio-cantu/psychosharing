@@ -50,7 +50,7 @@ class PostController extends Controller
 
         $this->attachKeys($request, $post);
 
-        $exercicio = $post->exercicio()->first();
+        $exercicio = $post->exercicio;
         
         $exercicio->update($request->except('titulo', 'linha_terapeutica'));
         
@@ -59,11 +59,13 @@ class PostController extends Controller
 
     public function cadastrarMaterial(MaterialRequest $request)
     {
-        $material = new Material($request->all());
+        $material = new Material($request->except('titulo', 'linha_terapeutica'));
         
         $post = Post::create([
                     'tipo'=>'material',
-                    'user_id'=>Auth::user()->id
+                    'user_id'=>Auth::user()->id,
+                    'titulo'=>$request->input('titulo'),
+                    'linha_terapeutica'=>$request->input('linha_terapeutica')
                 ]);
 
         $this->attachKeys($request, $post);
@@ -75,11 +77,13 @@ class PostController extends Controller
 
     public function cadastrarRelato(RelatoRequest $request)
     {
-        $relato = new Relato($request->all());
+        $relato = new Relato($request->except('titulo', 'linha_terapeutica'));
 
         $post = Post::create([
                         'tipo'=>'relato',
-                        'user_id'=>Auth::user()->id
+                        'user_id'=>Auth::user()->id,
+                        'titulo'=>$request->input('titulo'),
+                        'linha_terapeutica'=>$request->input('linha_terapeutica')
                     ]);
 
         $this->attachKeys($request, $post);
@@ -89,26 +93,67 @@ class PostController extends Controller
         return response()->json(['status'=>'created'], 200); 
     }
 
+    public function editarRelato(RelatoRequest $request, $id)
+    {  
+        $post = Post::find($id);
+
+        $post->update($request->only('titulo', 'linha_terapeutica'));
+
+        $this->attachKeys($request, $post);
+
+        $relato = $post->relato;
+        
+        $relato->update($request->except('titulo', 'linha_terapeutica'));
+        
+        return response()->json($relato);
+    }
+
     public function cadastrarEvento(EventoRequest $request)
     {
+
+        $dados1 = $request->except('data', 'titulo', 'linha_terapeutica');
+        
+        // formatar data para o padrão do mysql
+        $dataFormatada = ['data'=>implode("-",array_reverse(explode("/",$request->input('data'))))];
+
+        $dados = array_merge($dados1, $dataFormatada);
+
         $evento = new Evento($dados);
         
         $post = Post::create([
                     'tipo'=>'evento',
-                    'user_id'=>Auth::user()->id
+                    'user_id'=>Auth::user()->id,
+                    'titulo'=>$request->input('titulo'),
+                    'linha_terapeutica'=>$request->input('linha_terapeutica')
                 ]);
-
-        $dados1 = $request->except('data');
-
-        $dataFormatada = ['data'=>implode("-",array_reverse(explode("/",$request->input('data'))))];
-
-        $dados = array_merge($dados1, $dataFormatada);
 
         $this->attachKeys($request, $post);
 
         $post->evento()->save($evento);
 
         return response()->json(['status'=>'created'], 200);
+    }
+
+    public function editarEvento(EventoRequest $request, $id)
+    {  
+        $post = Post::find($id);
+
+        $post->update($request->only('titulo', 'linha_terapeutica'));
+
+        $this->attachKeys($request, $post);
+
+        $evento = $post->evento;
+
+        $dados1 = $request->except('data', 'titulo', 'linha_terapeutica');
+        
+        // formatar data para o padrão do mysql
+        $dataFormatada = ['data'=>implode("-",array_reverse(explode("/",$request->input('data'))))];
+
+        $dados = array_merge($dados1, $dataFormatada);
+        
+        $evento->update($dados);
+        
+        return response()->json($evento);
     }
 
     public function getResults(Request $request){
@@ -153,29 +198,38 @@ class PostController extends Controller
 
     public function cadastrarFormMaterial()
     {
-        return view('posts.materiais.formMaterial')->withAcao('cadastrar');
+        return view('posts.materiais.formMaterial')->withAcao('cadastrar')->with('editar',false);;
+    }
+
+    public function editarFormMaterial($id)
+    {
+        $post = Post::find($id);
+        return view('posts.materiais.formMaterial')->with('editar',true)->withPost($post);
     }
 
     public function cadastrarFormRelato()
     {
-        return view('posts.relatos.formRelato')->withAcao('cadastrar');
+        return view('posts.relatos.formRelato')->withAcao('cadastrar')->with('editar',false);;
+    }
+
+    public function editarFormRelato($id)
+    {
+        $post = Post::find($id);
+        return view('posts.relatos.formRelato')->with('editar',true)->withPost($post);
     }
 
     public function cadastrarFormEvento()
     {
-        return view('posts.eventos.formEvento')->withAcao('cadastrar');
+        return view('posts.eventos.formEvento')->withAcao('cadastrar')->with('editar',false);;
     }
 
-    public function teste()
+    public function editarFormEvento($id)
     {
-        $posts = Post::all();
-        // // $m = $p->material->titulo;
-        // // $ex = $p->exercicio->titulo;
-        return response()->json($posts);
-        //return view('testePosts')->withPosts($posts);
-
+        $post = Post::find($id);
+        return view('posts.eventos.formEvento')->with('editar',true)->withPost($post);
     }
 
+    // post para atribuir palavras chaves ao post
     public function attachKeys($request, $post)
     {
         // pega apenas o array de palavras chaves (isso retorna um array de arrays) 

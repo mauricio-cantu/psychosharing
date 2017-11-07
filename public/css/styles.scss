@@ -130,12 +130,16 @@ footer p{
     padding: 5px;
     color: white;
 }
-#lista-relacionados{
-    .card .card-content{
-        padding: 6px;
-        .info-post{
-            color: #CFCFCF;
-            font-size: 0.9em;
+
+
+#thumbnail{
+    .card{
+        padding: 10px;
+        .card-content{
+            padding: 10px;
+            p{
+                font-size: 1em;
+            }
         }
     }
 }

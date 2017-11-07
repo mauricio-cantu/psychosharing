@@ -31,23 +31,10 @@ function logout(){
 	alert('Logout?');
 }
 
-// exibir erros de preenchimento de dados
-function showErrors(data){
-    let errors = data.responseJSON;
-
-    // $('#errors').empty()
-    // .fadeIn('slow')
-    // .append('Os campos abaixo devem ser preenchidos:<br>')
-    // .append('<ul>');
-    // $.each(errors, function(key, value){					
-    //     $('#errors').append('<li>'+value+'</li>');
-    // });
-    // $('#errors').append('</ul>');
-}
 
 // dialog de publicação compartilhada ou editada, depende do parâmetro que for passado ao chamar o método
-function alertSuccess(type){
-    swal(type == "cadastrar" ? "Publicação compartilhada!" : "Publicação editada!", {
+function alertSuccess(){
+    swal("Concluído!", {
         icon: "success",
         timer: 2500
     }).then(function(){
@@ -59,7 +46,7 @@ function activateDropdowns(){
 	$('.dropdown-button').dropdown({
 		inDuration: 300,
 		outDuration: 225,
-		constrainWidth: true, // Does not change width of dropdown to that of the activator
+		constrainWidth: 0, // Does not change width of dropdown to that of the activator
 		hover: false, // Activate on hover
 		gutter: 0, // Spacing from edge
 		belowOrigin: true, // Displays   dropdown below the button

@@ -10,7 +10,7 @@
       <li><a class="btn-floating waves-effect waves-light red tooltipped" data-position="top" data-delay="50" data-tooltip="Evento" title="Evento" href="eventos/cadastrar"><i class="material-icons">date_range</i></a></li>
       <li><a class="btn-floating waves-effect waves-light yellow darken-1 tooltipped" data-position="top" data-delay="50" data-tooltip="Relato de caso" href="relatos/cadastrar"  title="Relato de caso"><i class="material-icons">format_align_left</i></a></li>
       <li><a class="btn-floating waves-effect waves-light green tooltipped" data-position="top" data-delay="50" data-tooltip="Exercícios e dicas" href="exercicios/cadastrar"  title="Exercícios e dicas"><i class="material-icons">casino</i></a></li>
-      <li><a class="btn-floating waves-effect waves-light blue tooltipped" data-position="top" data-delay="50" data-tooltip="Materiais" href="materiais/cadastrar" title="Material"><i class="material-icons">book</i></a></li>
+      <li><a class="btn-floating waves-effect waves-light blue tooltipped" data-position="top" data-delay="50" data-tooltip="Materiais" href="materials/cadastrar" title="Material"><i class="material-icons">book</i></a></li>
     </ul>
   </div>
 
@@ -38,7 +38,7 @@
         
             <div class="input-field row">
                 <form action="/posts/results" method="get">
-                    <input required="" name="key" type="text" class="validate col l11"/>
+                    <input required="" name="key" type="text" class="validate autocomplete col l11"/>
                     <button type="submit" class="btn right"><i class="fa fa-search"></i> </button>
                 </form>
             </div>
@@ -49,10 +49,23 @@
             {{ Auth::user()->linha_teorica }}
         </div>
     </center>
-    <div class="row" id="lista-relacionados">
-    @foreach($posts as $post)
-        @include('commom.thumbnail-post')
-    @endforeach
+    <br>
+    <div class="row" class="legenda">
+        @foreach($posts as $post)
+            @include('commom.thumbnail-post')
+        @endforeach
+    </div>
+    <hr>    
+    <center>
+        <div class="label z-depth-3">
+            Últimos compartilhamentos
+        </div>
+    </center>
+    <br>
+    <div class="row">
+        @foreach($ultimos as $post)
+            @include('commom.thumbnail-post')
+        @endforeach
     </div>
 
 

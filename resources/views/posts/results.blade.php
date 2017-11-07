@@ -2,22 +2,11 @@
 
 @section('conteudo')
 
-<!-- @foreach($posts as $p)
-	@if($p->tipo == 'exercicio')
-		<h1>{{ $p->exercicio->titulo }}</h1>
-		<h3>Por {{ $p->tipo }}</h3>
-	@elseif($p->tipo == 'material')
-		<h1>{{ $p->material->titulo }}</h1>
-		<h3>Por {{ $p->tipo }}</h3>
-	@elseif($p->tipo == 'relato')
-		<h1>{{ $p->tipo }}</h1>
-	@elseif($p->tipo == 'evento')
-		<h1>kkkk {{ $p->tipo }}</h1>
-	@endif
-@endforeach -->
 
 <div class="card" id="result-tabs">
     <h3 class="center">Resultados para '{{ app('request')->input('key') }}'</h3>
+    <hr>
+    <br>
     <ul id="tabs" class="tabs center">
         <li class="tab col s3"><a href="#exercicio">Exercícios e dicas <span class="badge indigo white-text">{{ $counts['exercicios'] }}</span></a></li>
         <li class="tab col s3"><a href="#eventos">Eventos <span class="badge indigo white-text">{{ $counts['eventos'] }}</span></a></li>

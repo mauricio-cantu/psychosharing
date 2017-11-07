@@ -6,12 +6,12 @@
 	<br>
 	<img class="responsive-img" src="../imgs/PsychoSharing(1).png"><br>
 	<br>
-	<a class="waves-effect waves-light btn" id="conheca" href="#promo">Conheça</a>
+	<a class="waves-effect waves-light btn hide-on-med-and-down" id="conheca" href="#promo">Conheça</a>
 	<br>
 	<br>
 </div>
 
-<div id="promo" class="hoverable card">
+<div id="promo" class="hoverable card hide-on-med-and-down">
 	<div class="container">
 		<h1 class="amber-text text-accent-3 center-align">Golden Circle</h1>
 		<h4 class="center-align white-text">do PsychoSharing</h4>
@@ -99,8 +99,6 @@
 
 	// efeito de deslize ao clicar em "conheça"
 	var $doc = $('html, body');
-
-	console.log("dadas");
 
 	$('#conheca').click(function() {
 	    $doc.animate({

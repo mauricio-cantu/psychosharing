@@ -51,11 +51,22 @@
   <li>
     <div class="user-view">
       <div class="background indigo darken-2"></div>
-      <a style="color: white;" href=""><i class="medium material-icons">account_circle</i></a>
+      <a style="color: white;" href="">
+        @if(Auth::user()->foto_perfil)
+            <img class="circle responsive-img" style="height: 100px; width: 100px;" src="{{ asset('/profile-pics/' . Auth::user()->foto_perfil) }}">
+        @else
+            <i class="medium material-icons">account_circle</i>
+        @endif
+      </a>
       <hr>
-      <a href="#" class="white-text"><i class="fa fa-user"></i>  {{Auth::user()->name}}</a><br> 
       <a href="/users/edit-profile" class="white-text"><i class="fa fa-pencil"></i>  Informações pessoais</a><br>
-      <a href="#" class="white-text"><i class="fa fa-th-list"></i>  Gerenciar postagens</a>
+      <a href="#" class="white-text"><i class="fa fa-th-list"></i>  Gerenciar postagens</a><br>
+      <a href="#" class="white-text" onclick="document.getElementById('logout-form').submit();">
+          <i class="fa fa-sign-out"></i> Logout
+      </a>
+      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        {{ csrf_field() }}
+      </form>
     </div>
   </li>
   <li><a href="#!"><i class="material-icons">date_range</i> Eventos</a></li>
@@ -92,8 +103,8 @@
       <a href="/" alt="home" title="home" class="brand-logo center hide-on-small-only"><i class="material-icons" style="display: inline;">home</i> PsychoSharing</a>
       
       <ul class="right hide-on-med-and-down">        
-        <li><a class="btn waves-effect waves-light dropdown-button" data-activates="options">{{ Auth::user()->name }}</a></li>
-
+        <!-- <li><a class="btn waves-effect waves-light dropdown-button" data-activates="options">{{ Auth::user()->name }}</a></li> -->
+        
         <ul id='options' class='dropdown-content' style="width: 300px !important">
           <li><a href="/users/edit-profile">Configurações</a></li>
           <li><a href="#!">Dashboard</a></li>
