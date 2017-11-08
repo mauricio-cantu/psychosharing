@@ -57,18 +57,29 @@ class PostController extends Controller
         return response()->json($exercicio);
     }
 
-    public function cadastrarMaterial(MaterialRequest $request)
-    {
-        $material = new Material($request->except('titulo', 'linha_terapeutica'));
+    public function cadastrarMaterial(Request $request)
+    {       
+
+        $material = new Material($request->except('titulo', 'linha_terapeutica', 'anexo'));
+
+        if($request->hasFile('anexo')){
+            $fileName = Auth::user()->id . '-' . time() . '.' . $request->file('anexo')->getClientOriginalExtension();
+            $path = $request->file('anexo')->storeAs(
+                'public/downloads',
+                $fileName
+            );
+            $material->anexo = $fileName;
+            $material->update();
+        }
         
         $post = Post::create([
-                    'tipo'=>'material',
-                    'user_id'=>Auth::user()->id,
-                    'titulo'=>$request->input('titulo'),
-                    'linha_terapeutica'=>$request->input('linha_terapeutica')
-                ]);
+            'tipo'=>'material',
+            'user_id'=>Auth::user()->id,
+            'titulo'=>$request->input('titulo'),
+            'linha_terapeutica'=>$request->input('linha_terapeutica')
+        ]);
 
-        $this->attachKeys($request, $post);
+        // $this->attachKeys($request, $post);
 
         $post->material()->save($material);
 
@@ -264,6 +275,13 @@ class PostController extends Controller
 
     }
 
-    // Posts associados à uma tag: App\PalavraChave::find(1)->post()->get()
+    public function testeUpload(Request $request){
+        $fileName = Auth::user()->id . '-' . time() . '.' . $request->file('profile')->getClientOriginalExtension();
+        $path = $request->file('profile')->storeAs(
+            'public/profile-pics',
+            $fileName
+        );
+        return $path;
+    }
 
 }

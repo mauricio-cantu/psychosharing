@@ -1,7 +1,7 @@
 <div class="col s12 m4" id="thumbnail">
           <div class="card indigo darken-1">
             <div class="card-content white-text">
-              <span class="card-title">{{$post->titulo}}</span>
+              <span class="card-title truncate" title="{{$post->titulo}}">{{$post->titulo}}</span>
               @if($post->tipo == "exercicio")
               <p>Exercício</p>
               @elseif($post->tipo == "relato")
@@ -11,6 +11,7 @@
               @elseif($post->tipo == "material")
               <p>Material</p>
               @endif
+              <p>Linha: {{ $post->linha_terapeutica }}</p>
               <br>
               <span class="info-post">Por <a href="#">{{$post->user->name}}</a>, {{ date('d/m/Y', strtotime($post->created_at)) }} </span>
             </div>

@@ -39,6 +39,8 @@
 			<button class="btn" type="submit" id="submit">Concluir</button>
 			
 		</div>
+
+	</form>
 </div>
 
 <script src="{{ asset('js/posts/relato.js') }}"></script>

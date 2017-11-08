@@ -10,8 +10,8 @@ class Material extends Model
 	protected $table = "materiais";
 
     protected $fillable = ['post_id', 'descricao', 'link', 'anexo'];
-    
-    protected $touches = ['post'];
+
+    public $timestamps = false;
 
     public function post()
     {

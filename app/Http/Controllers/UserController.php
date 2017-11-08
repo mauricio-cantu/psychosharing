@@ -15,8 +15,8 @@ class UserController extends Controller
     
     public function index(){
         $linha = Auth::user()->linha_teorica;
-        $postsRelacionados = Post::whereLinhaTerapeutica($linha)->whereUserId('!=',Auth::user()->id)->take(6)->get();
-        $ulimosPosts = Post::latest()->take(3)->get();
+        $postsRelacionados = Post::whereLinhaTerapeutica($linha)->where('user_id' ,'!=', Auth::user()->id)->take(6)->get();
+        $ulimosPosts = Post::latest()->take(6)->get();
         return view('principal.home')->withPosts($postsRelacionados)
                                      ->withUltimos($ulimosPosts);
     }
@@ -54,23 +54,30 @@ class UserController extends Controller
 
     public function updateProfilePicture(Request $request){
 
+        $anexo = $request->file('profile');
+        $user = Auth::user();
+
         if($request->hasFile('profile')){
-
-            $user = Auth::user();
-
-    		$profile = $request->file('profile');
-    		$filename = str_random(6) . '-' . $user->id . '.' . $profile->getClientOriginalExtension();
+            $fileName = $user->id . '-' . time() . '-picture.' . $anexo->getClientOriginalExtension();
+            $path = $anexo->storeAs(
+                'public/profile-pics',
+                $fileName
+            );
             
-            $img = Image::make($profile);
-            $caminho = public_path('profile-pics').'/'.$filename;
-            $img->save($caminho);
+            $user->foto_perfil = $fileName;
+            $user->update(); 
 
-            $user->foto_perfil = $filename;
-            $user->update();             
+            return redirect()->back()->with('status', 'Foto de perfil atualizada!');
 
-    		return redirect()->back()->with('status', 'Foto de perfil atualizada!');
+        }else{
+            return redirect()->back();
         }
         
+    }
+
+    public function showProfile($id){
+        $user = User::find($id);
+        return view('users.profile')->withUser($user);
     }
 
 

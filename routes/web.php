@@ -55,7 +55,7 @@ Route::middleware('auth')->group(function(){
 	
 		Route::get('ajax/{id}', function($id){
 			$post = Post::find($id);
-			$material = $post->material()->first();
+			$material = $post->material;
 			$keys = $post->chaves()->select('palavra_chave as tag')->get();
 			return response()->json(array(
 				'post'=>$post,
@@ -63,7 +63,6 @@ Route::middleware('auth')->group(function(){
 				'keys'=>$keys
 			));	
 		});
-
 	});
 	
 	Route::prefix('relatos')->group(function(){
@@ -113,13 +112,16 @@ Route::middleware('auth')->group(function(){
 	});
 
 	Route::prefix('users')->group(function(){
-
+		// retorna form para edição
 		Route::get('edit-profile', 'UserController@editProfileForm');
 
+		// envia dados para editar o usuario
 		Route::post('edit-profile', 'UserController@editProfile');
 
+		// editar foto de perfil
 		Route::post('update-picture', 'UserController@updateProfilePicture');
-		Route::get('update-picture', function(){ return view('users.teste-upload'); });
+		
+		Route::get('{id}', 'UserController@showProfile');
 
 	});
 
@@ -129,9 +131,12 @@ Route::middleware('auth')->group(function(){
 
 	});
 
+	
+	
 });
 
-
+Route::get('update-picture', function(){ return view('users.teste-upload'); });
+Route::post('teste-upload', 'PostController@testeUpload');
 
 Route::get('jsonView', function(){
 	return view('posts.exercicios.testeJson');

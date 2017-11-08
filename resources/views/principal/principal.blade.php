@@ -51,9 +51,9 @@
   <li>
     <div class="user-view">
       <div class="background indigo darken-2"></div>
-      <a style="color: white;" href="">
+      <a style="color: white;" href="/users/{{ Auth::user()->id }}">
         @if(Auth::user()->foto_perfil)
-            <img class="circle responsive-img" style="height: 100px; width: 100px;" src="{{ asset('/profile-pics/' . Auth::user()->foto_perfil) }}">
+            <img class="circle responsive-img" style="height: 100px; width: 100px;" src="{{ asset('/storage/profile-pics/' . Auth::user()->foto_perfil) }}">
         @else
             <i class="medium material-icons">account_circle</i>
         @endif

@@ -16,7 +16,7 @@
         <h3 class="center" style="display: inline;">Edite suas informações</h3>
         <a href="#modal" title="Alterar foto de perfil" class="right modal-trigger">
             @if(Auth::user()->foto_perfil)
-                <img class="circle responsive-img" style="height: 100px; width: 100px;" src="{{ asset('/profile-pics/' . Auth::user()->foto_perfil) }}">
+                <img class="circle responsive-img" style="height: 100px; width: 100px;" src="{{ asset('/storage/profile-pics/' . Auth::user()->foto_perfil) }}">
             @else
                 <i class="medium material-icons">account_circle</i>
             @endif
