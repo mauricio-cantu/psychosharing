@@ -12,7 +12,6 @@ submit = () => {
 	let linha = $('#linha_terapeutica').val();
 	let token = $('#token').val();
 	let link = $('#link').val();
-	// let anexo = new FormData($('#form')[0]);
 	let chips = $('#chips').material_chip('data');
 
 	let url = $('#form').attr('action'); 

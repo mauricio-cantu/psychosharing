@@ -8,29 +8,20 @@ $(function(){
 
 	$('#sexo, #linha_terapeutica').material_select();
 
+	// esconde a mensagem de erro e tira o vermelho dos campos que nao passaram pela validação
 	$('.validate, .datepicker').focus(function(){
 		$(this).removeClass('invalid');
 		$(this).parent().find('span').hide();
 	});
 
-	$('#sem-linha').click(function(){
-		$('#linha_terapeutica').attr('disabled');
-	});
+
 	
-	disableLink();
-	
-	disableAnexo();
 	
 	activateDatepicker();
 
 	activateDropdowns();	
 
 });
-
-function logout(){
-	alert('Logout?');
-}
-
 
 // dialog de publicação compartilhada ou editada, depende do parâmetro que for passado ao chamar o método
 function alertSuccess(){
@@ -78,36 +69,5 @@ function activateDatepicker(){
         close: 'Fechar',
         closeOnSelect: false,
         format: 'dd/mm/yyyy'
-	});
-}
-
-// função para poder desabilitar o campo de anexo
-function disableAnexo(){
-	$('.anexo').prop('disabled', false);
-	
-	$('#noFile').click(function(){
-		if($('.anexo').is(':disabled')){
-			$('#link').val('');
-			$('#link').removeClass('valid');
-			$('.anexo').prop('disabled', false);
-		}else{
-			$('.anexo').prop('disabled', true);
-		}
-	});
-}
-
-// função para poder desabilitar o campo de link	
-function disableLink(){
-	$('#link').prop('disabled', false);
-	
-	$('#noLink').click(function(){
-
-		if($('#link').is(':disabled')){
-			$('#link').prop('disabled', false);
-		}else{
-			$('#link').val('');
-			$('#link').removeClass('valid');
-			$('#link').prop('disabled', true);
-		}
 	});
 }

@@ -28,8 +28,10 @@ Route::middleware('auth')->group(function(){
 		Route::get('editar/{id}', 'PostController@editarFormExercicio');
 
 		Route::post('editar/{id}', 'PostController@editarExercicio');	
+
+		Route::get('{id}', 'PostController@detalhesExercicio');
 		
-		// método que é acessado via AJAX para exibir as informações de um exericio que está sendo editado
+		// método que é acessado via AJAX para exibir as informações de um post que está sendo editado
 		Route::get('ajax/{id}', function($id){
 			$post = Post::find($id);
 			$exercicio = $post->exercicio()->first();
@@ -51,7 +53,14 @@ Route::middleware('auth')->group(function(){
 
 		Route::get('editar/{id}', 'PostController@editarFormMaterial');
 		
-		Route::post('editar/{id}', 'PostController@editarMaterial');	
+		Route::post('editar/{id}', 'PostController@editarMaterial');
+		
+		Route::get('{id}', 'PostController@detalhesMaterial');
+
+		Route::get('{id}/download', function($id){
+			$material = Post::find($id)->material;
+			return response()->download(public_path('/storage/downloads/'.$material->anexo));	
+		});
 	
 		Route::get('ajax/{id}', function($id){
 			$post = Post::find($id);
@@ -74,6 +83,8 @@ Route::middleware('auth')->group(function(){
 		Route::get('editar/{id}', 'PostController@editarFormRelato');
 		
 		Route::post('editar/{id}', 'PostController@editarRelato');	
+
+		Route::get('{id}', 'PostController@detalhesRelato');
 	
 		Route::get('ajax/{id}', function($id){
 			$post = Post::find($id);
@@ -97,6 +108,8 @@ Route::middleware('auth')->group(function(){
 		Route::get('editar/{id}', 'PostController@editarFormEvento');
 		
 		Route::post('editar/{id}', 'PostController@editarEvento');	
+
+		Route::get('{id}', 'PostController@detalhesEvento');
 	
 		Route::get('ajax/{id}', function($id){
 			$post = Post::find($id);
@@ -131,13 +144,10 @@ Route::middleware('auth')->group(function(){
 
 	});
 
-	
-	
-});
+	Route::prefix('comentarios')->group(function(){
 
-Route::get('update-picture', function(){ return view('users.teste-upload'); });
-Route::post('teste-upload', 'PostController@testeUpload');
+		Route::post('cadastrar/{idPost}', 'ComentarioController@comentar');
 
-Route::get('jsonView', function(){
-	return view('posts.exercicios.testeJson');
+	});
+
 });

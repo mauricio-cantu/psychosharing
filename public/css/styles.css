@@ -6991,4 +6991,17 @@ footer p {
     #thumbnail .card .card-content p {
       font-size: 1em; }
 
+#post-details h3, #post-details h4, #post-details h5, #user-profile h3, #user-profile h4, #user-profile h5 {
+  color: #303f9f; }
+#post-details .row, #user-profile .row {
+  padding: 20px; }
+
+.comentario {
+  background-color: #F1F1F1;
+  border-radius: 20px;
+  padding: 20px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px; }
+
 /*# sourceMappingURL=styles.css.map */

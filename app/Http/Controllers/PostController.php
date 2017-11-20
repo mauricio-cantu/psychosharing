@@ -54,7 +54,7 @@ class PostController extends Controller
         
         $exercicio->update($request->except('titulo', 'linha_terapeutica'));
         
-        return response()->json($exercicio);
+        return response()->json(['status'=>'updated'], 200);
     }
 
     public function cadastrarMaterial(Request $request)
@@ -116,7 +116,7 @@ class PostController extends Controller
         
         $relato->update($request->except('titulo', 'linha_terapeutica'));
         
-        return response()->json($relato);
+        return response()->json(['status'=>'updated'], 200);
     }
 
     public function cadastrarEvento(EventoRequest $request)
@@ -164,12 +164,16 @@ class PostController extends Controller
         
         $evento->update($dados);
         
-        return response()->json($evento);
+        return response()->json(['status'=>'updated'], 200);
     }
-
+    
+    // retorna view com resultados da busca do usuário
     public function getResults(Request $request){
         $key = $request->get('key');
+        
+        // pega a palavra chave do banco correspondente a palavra digitada pelo usuario
         $dbKey = PalavraChave::wherePalavraChave($key)->first();
+        
         // caso a chave não seja encontrada, o usuaro é redirecionado pra paagina de erro 404 
         if(is_null($dbKey)){
             return view('errors.404');
@@ -240,7 +244,31 @@ class PostController extends Controller
         return view('posts.eventos.formEvento')->with('editar',true)->withPost($post);
     }
 
-    // post para atribuir palavras chaves ao post
+    public function detalhesEvento($id)
+    {
+        $evento = Post::find($id)->evento;
+        return view('posts.eventos.evento-details')->withEvento($evento);
+    }
+
+    public function detalhesMaterial($id)
+    {
+        $material = Post::find($id)->material;
+        return view('posts.materiais.material-details')->withMaterial($material);
+    }
+
+    public function detalhesExercicio($id)
+    {
+        $exercicio = Post::find($id)->exercicio;
+        return view('posts.exercicios.exercicio-details')->withExercicio($exercicio);
+    }
+
+    public function detalhesRelato($id)
+    {
+        $relato = Post::find($id)->relato;
+        return view('posts.relatos.relato-details')->withRelato($relato);
+    }
+
+    // função para atribuir palavras chaves ao post
     public function attachKeys($request, $post)
     {
         // pega apenas o array de palavras chaves (isso retorna um array de arrays) 
@@ -273,15 +301,6 @@ class PostController extends Controller
         // associo as tags aos posts passando o array de IDs (novas + existentes)
         $post->chaves()->sync($allKeys);
 
-    }
-
-    public function testeUpload(Request $request){
-        $fileName = Auth::user()->id . '-' . time() . '.' . $request->file('profile')->getClientOriginalExtension();
-        $path = $request->file('profile')->storeAs(
-            'public/profile-pics',
-            $fileName
-        );
-        return $path;
     }
 
 }
