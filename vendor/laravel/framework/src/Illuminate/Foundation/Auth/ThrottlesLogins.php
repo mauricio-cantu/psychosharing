@@ -48,7 +48,7 @@ trait ThrottlesLogins
 
         $message = Lang::get('auth.throttle', ['seconds' => $seconds]);
 
-        $errors = [$this->username() => 'Muitas tentativas falhas. Tente novamente em '.$seconds.' segundos.'];
+        $errors = [$this->username() => $message];
 
         if ($request->expectsJson()) {
             return response()->json($errors, 423);

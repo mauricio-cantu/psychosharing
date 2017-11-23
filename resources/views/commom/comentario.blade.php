@@ -4,7 +4,7 @@
         @if($comentario->user->foto_perfil)
         <img class="circle responsive-img" style="height: 100px; width: 100px;" src="{{ asset('/storage/profile-pics/' . $comentario->user->foto_perfil) }}">
         @else
-        <i class="medium material-icons">account_circle</i>
+        <i class="large material-icons">account_circle</i>
         @endif
     </a>
     {{ $comentario->user->name }} comentou:

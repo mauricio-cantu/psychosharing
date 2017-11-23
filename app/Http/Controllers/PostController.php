@@ -17,6 +17,9 @@ use App\Http\Requests\EventoRequest;
 
 class PostController extends Controller
 {
+
+    // cadastra e edita publicações
+
    	public function cadastrarExercicio(ExercicioRequest $request)
     {
         // apenas cria um novo exercicio, sem persistir no banco
@@ -63,7 +66,7 @@ class PostController extends Controller
         $material = new Material($request->except('titulo', 'linha_terapeutica', 'anexo'));
 
         if($request->hasFile('anexo')){
-            $fileName = Auth::user()->id . '-' . time() . '.' . $request->file('anexo')->getClientOriginalExtension();
+            $fileName = $request->file('anexo')->getClientOriginalName();
             $path = $request->file('anexo')->storeAs(
                 'public/downloads',
                 $fileName
@@ -167,38 +170,7 @@ class PostController extends Controller
         return response()->json(['status'=>'updated'], 200);
     }
     
-    // retorna view com resultados da busca do usuário
-    public function getResults(Request $request){
-        $key = $request->get('key');
-        
-        // pega a palavra chave do banco correspondente a palavra digitada pelo usuario
-        $dbKey = PalavraChave::wherePalavraChave($key)->first();
-        
-        // caso a chave não seja encontrada, o usuaro é redirecionado pra paagina de erro 404 
-        if(is_null($dbKey)){
-            return view('errors.404');
-        }
-        
-        // caso seja encontrada, é retornado todos os posts com essa palavra chave
-        $posts = $dbKey->post()->get();
-
-        // aqui é armazenado em variaveis o numero de cada tipo de post com essa palavra chave
-        $numExercicios = $posts->where('tipo','exercicio')->count();
-        $numEventos = $posts->where('tipo','evento')->count();
-        $numRelatos = $posts->where('tipo','relato')->count();
-        $numMateriais = $posts->where('tipo','material')->count();
-
-        // essas variaveis são passadas a um array
-        $counts = array(
-            'exercicios'=>$numExercicios,
-            'relatos'=>$numRelatos,
-            'eventos'=>$numEventos,
-            'materiais'=>$numMateriais
-        );
-
-        // view de resultado é retornada contendo os posts relacionados e a quantidade de cada tipo
-        return view('posts.results')->withPosts($posts)->withCounts($counts);
-    }
+    // exibir formulário de cadastro e edição das publicações    
 
     public function cadastrarFormExercicio()
     {
@@ -243,6 +215,8 @@ class PostController extends Controller
         $post = Post::find($id);
         return view('posts.eventos.formEvento')->with('editar',true)->withPost($post);
     }
+
+    // exibir página da publicações
 
     public function detalhesEvento($id)
     {
@@ -301,6 +275,39 @@ class PostController extends Controller
         // associo as tags aos posts passando o array de IDs (novas + existentes)
         $post->chaves()->sync($allKeys);
 
+    }
+
+    // retorna view com resultados da busca do usuário
+    public function getResults(Request $request){
+        $key = $request->get('key');
+        
+        // pega a palavra chave do banco correspondente a palavra digitada pelo usuario
+        $dbKey = PalavraChave::wherePalavraChave($key)->first();
+        
+        // caso a chave não seja encontrada, o usuaro é redirecionado pra paagina de erro 404 
+        if(is_null($dbKey)){
+            return view('errors.404');
+        }
+        
+        // caso seja encontrada, é retornado todos os posts com essa palavra chave
+        $posts = $dbKey->post()->get();
+
+        // aqui é armazenado em variaveis o numero de cada tipo de post com essa palavra chave
+        $numExercicios = $posts->where('tipo','exercicio')->count();
+        $numEventos = $posts->where('tipo','evento')->count();
+        $numRelatos = $posts->where('tipo','relato')->count();
+        $numMateriais = $posts->where('tipo','material')->count();
+
+        // essas variaveis são passadas a um array
+        $counts = array(
+            'exercicios'=>$numExercicios,
+            'relatos'=>$numRelatos,
+            'eventos'=>$numEventos,
+            'materiais'=>$numMateriais
+        );
+
+        // view de resultado é retornada contendo os posts relacionados e a quantidade de cada tipo
+        return view('posts.results')->withPosts($posts)->withCounts($counts);
     }
 
 }

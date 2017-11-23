@@ -12,20 +12,17 @@
     <title>PsychoSharing</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/materialize.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet">  
-    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">    
+    <link href="{{ asset('css/all.css') }}" rel="stylesheet"> 
 
     <!-- Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
     <link href="{{ asset('css/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
 
     <!-- Scripts -->    
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/jquery-ui.js') }}"></script>
-    <script src="{{ asset('js/scripts.js') }}"></script>
+    <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
     <script src="{{ asset('js/materialize.min.js') }}"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>    
+    <script src="{{ asset('js/scripts.js') }}"></script>
+    <script src="{{ asset('js/sweetalert.min.js') }}"></script>    
 
 </head>
 

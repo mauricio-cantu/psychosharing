@@ -16,7 +16,7 @@
       <span class="info-post">Por <a href="/users/{{$post->user->id}}">{{$post->user->name}}</a>, {{ date('d/m/Y', strtotime($post->created_at)) }} </span>
     </div>
     <div class="card-action">
-      <a href="{{ $post->tipo }}s/{{ $post->id }}">Ver mais</a>
+      <a href="/{{ $post->tipo }}s/{{ $post->id }}">Ver mais</a>
     </div>
   </div>
 </div>

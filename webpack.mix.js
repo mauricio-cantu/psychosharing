@@ -11,5 +11,9 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+mix.sass('resources/assets/sass/styles.scss', 'public/css/styles.css')
+    .copy('node_modules/sweetalert/dist/sweetalert.min.js', 'public/js')
+    .styles([
+        'public/css/materialize.css',
+        'public/css/styles.css'
+    ], 'public/css/all.css');

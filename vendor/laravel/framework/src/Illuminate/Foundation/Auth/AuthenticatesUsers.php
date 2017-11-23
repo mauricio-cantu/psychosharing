@@ -61,9 +61,7 @@ trait AuthenticatesUsers
         $this->validate($request, [
             $this->username() => 'required|string',
             'password' => 'required|string',
-        ], 
-        ['required'=>'O campo :attribute deve ser preenchido!'],
-        ['password'=>'senha']);
+        ]);
     }
 
     /**
@@ -126,7 +124,7 @@ trait AuthenticatesUsers
      */
     protected function sendFailedLoginResponse(Request $request)
     {
-        $errors = [$this->username() => 'Credenciais não encontradas!'];
+        $errors = [$this->username() => trans('auth.failed')];
 
         if ($request->expectsJson()) {
             return response()->json($errors, 422);

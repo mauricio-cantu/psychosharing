@@ -1,6 +1,4 @@
-$(function(){
-
-	$(".button-collapse").sideNav();
+$(() => {
 	
 	$("#bt-menu").sideNav();
 
@@ -14,9 +12,6 @@ $(function(){
 		$(this).parent().find('span').hide();
 	});
 
-
-	
-	
 	activateDatepicker();
 
 	activateDropdowns();	

@@ -14,6 +14,7 @@
     </ul>
   </div>
 
+    <!-- exibir mensagem de foto de perfil atualizada -->
     @if(session('status'))
         <br>
         <div class="success z-depth-4">
@@ -35,37 +36,39 @@
 
         <p class="center">O que deseja descobrir hoje? Busque abaixo por palavra-chave!</p>
         
-        
-            <div class="input-field row">
-                <form action="/posts/results" method="get">
-                    <input required="" name="key" type="text" class="validate autocomplete col l11"/>
-                    <button type="submit" class="btn right"><i class="fa fa-search"></i> </button>
-                </form>
+        <div class="input-field row">
+            <form action="/posts/results" method="get">
+                <input required="" name="key" type="text" class="validate autocomplete col l11"/>
+                <button type="submit" class="btn right"><i class="fa fa-search"></i> </button>
+            </form>
+        </div>
+    </div>
+    <div class="card hoverable">
+        <center>
+            <div class="label z-depth-3">
+                {{ Auth::user()->linha_teorica }}
             </div>
-    </div>
-
-    <center>
-        <div class="label z-depth-3">
-            {{ Auth::user()->linha_teorica }}
+        </center>
+        <br>
+        <div class="row" class="legenda">
+            @foreach($posts as $post)
+                @include('commom.thumbnail-post')
+            @endforeach
         </div>
-    </center>
-    <br>
-    <div class="row" class="legenda">
-        @foreach($posts as $post)
-            @include('commom.thumbnail-post')
-        @endforeach
     </div>
-    <hr>    
-    <center>
-        <div class="label z-depth-3">
-            Últimos compartilhamentos
+    
+    <div class="card hoverable">
+        <center>
+            <div class="label z-depth-3">
+                Últimos compartilhamentos
+            </div>
+        </center>
+        <br>
+        <div class="row">
+            @foreach($ultimos as $post)
+                @include('commom.thumbnail-post')
+            @endforeach
         </div>
-    </center>
-    <br>
-    <div class="row">
-        @foreach($ultimos as $post)
-            @include('commom.thumbnail-post')
-        @endforeach
     </div>
 
 

@@ -47,7 +47,7 @@ trait SendsPasswordResetEmails
      */
     protected function validateEmail(Request $request)
     {
-        $this->validate($request, ['email' => 'required|email'],['required'=>'O campo :attribute deve ser preenchido!', 'email'=>'Insira um e-mail válido!']);
+        $this->validate($request, ['email' => 'required|email']);
     }
 
     /**
@@ -71,7 +71,7 @@ trait SendsPasswordResetEmails
     protected function sendResetLinkFailedResponse(Request $request, $response)
     {
         return back()->withErrors(
-            ['email' => 'E-mail não encontrado!']
+            ['email' => trans($response)]
         );
     }
 
