@@ -7,8 +7,7 @@ Plataforma web para facilitar a integração entre profissionais da Psicologia a
 ## Tecnologias utilizadas
 
 - Laravel PHP Framework
-- Materialize CSS
-- jQuery
+- Javascript
 - MySQL
 
 <hr>
