@@ -2,9 +2,9 @@
 
 ## PsychoSharing
 
-Plataforma web para facilitar a integração entre profissionais da Psicologia através da contribuição dos próprios usuários. O PsychoSharing oferece um ambiente de fácil interação que permite o compartilhamento de eventos, relatos de casos, dicas e exercícios psicológicos e materiais de psicologia. O projeto está sendo desenvolvido como parte do TCC do Curso Técnico em Informática.
+Web app to facilitate the integration among Psychology professionals through the contrbution of its own users. The app provides an easy-to-use environment to share events, case reports, hint, psychological exercises and psychology materials. This project was developed as part of the Technical Course in Computer Science Final Paper.  
 
-## Tecnologias utilizadas
+## Technologies
 
 - Laravel PHP Framework
 - Javascript
