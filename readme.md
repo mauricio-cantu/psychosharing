@@ -2,7 +2,7 @@
 
 ## PsychoSharing
 
-Web app to facilitate the integration among Psychology professionals through the contrbution of its own users. The app provides an easy-to-use environment to share events, case reports, hint, psychological exercises and psychology materials. This project was developed as part of the Technical Course in Computer Science Final Paper.  
+Web app to facilitate the integration among Psychology professionals through the contrbution of its own users. The app provides an easy-to-use environment to share events, case reports, hint, psychological exercises and psychology materials. This project was developed as part of the Technical Course in Computer Science' Final Paper.  
 
 ## Technologies
 
