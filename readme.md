@@ -4,7 +4,7 @@
 
 Web app to facilitate the integration among Psychology professionals through the contrbution of its own users. The app provides an easy-to-use environment to share events, case reports, hint, psychological exercises and psychology materials. Posts can be categorized with keywords and users can interact with each other through comments on each type of post. This project was developed as part of the Technical Course in Computer Science' Final Paper. The project was presented at several fairs and events and won a prominent award at 'Salão Jovem UFRGS 2017' (http://www.sapucaia.ifsul.edu.br/ultimas-noticias/1078-alunos-do-campus-sao-premiados-com-trofeu-destaque-jovem-pesquisador).
 
-Final Paper: https://docs.google.com/document/d/1hKy24IwfygaZR4AeSEbpV4wW_LiOnbPy2oDREBmFlo0/
+Final Paper: http://tiny.cc/psharing
 
 ## Technologies
 
